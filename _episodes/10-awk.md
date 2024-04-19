@@ -2,18 +2,19 @@
 layout: page
 title: AWK
 subtitle: Manipulating and filtering complex data
+quesstions:  
+- "How to use AWK for text processing?"
 minutes: 120
+objectives:  
+ - Explain why AWK is useful and when it is better than pipes.
+ - Show a basic usage similar to the command "cut"
+ - Introduce the filed separator parameter.
+ - Use regulax expressions to perform different instructions.
+ - Introduce BEGIN and END keywords.
+ - Use the if then structure to change behaviour for the same matching regex.
+ - Introduce the array data structure.
+ - Use the for loop to cycle through an array
 ---
-> ## Learning Objectives {.objectives}
->
-> *   Explain why AWK is useful and when it is better than pipes.
-> *   Show a basic usage similar to the command "cut"
-> *   Introduce the filed separator parameter.
-> *   Use regulax expressions to perform different instructions.
-> *   Introduce BEGIN and END keywords.
-> *   Use the if then structure to change behaviour for the same matching regex.
-> *   Introduce the array data structure.
-> *   Use the for loop to cycle through an array
 
 Prerequisite: shell and any programming language
 

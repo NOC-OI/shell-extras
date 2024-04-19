@@ -1,14 +1,14 @@
 ---
 layout: page
-title: The Unix Shell
-subtitle: Command Subsitution
+title: Command Subsitution
+questions: 
+- "How to use command substitutions for arguments flexibility?"
 minutes: 15
+objectives: 
+- Understand the need for flexibility regarding arguments
+- Generate the values of the arguments on the fly using command substitution
+- Understand the difference between pipes/redirection, and the command substitution operator
 ---
-> ## Learning Objectives {.objectives}
->
-> * Understand the need for flexibility regarding arguments
-> * Generate the values of the arguments on the fly using command substitution
-> * Understand the difference between pipes/redirection, and the command substitution operator
 
 ## Introduction
 
