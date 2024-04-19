@@ -1,6 +1,5 @@
 ---
 title: AWK
-subtitle: Manipulating and filtering complex data
 teaching: 20
 exercise: 5
 quesstions:  
@@ -16,7 +15,9 @@ objectives:
 - "Use the for loop to cycle through an array"
 ---
 
-Prerequisite: shell and any programming language
+AWK is a tool for manipulating and filtering complex data. This chapter requires understanding of previous shell chapters and any programming language.
+
+Let's start.  
 
 If we need to count the number of lines in a file, we can use the previously
 showed command for word counting wc
