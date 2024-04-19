@@ -1,9 +1,10 @@
 ---
+layout: page
 title: AWK
 teaching: 20
 exercises: 5
 questions:  
-- "How to use AWK for text processing?"
+- "How to use AWK for text processing?"  
 objectives:  
 - "Explain why AWK is useful and when it is better than pipes"
 - "Show a basic usage similar to the command "cut" "
