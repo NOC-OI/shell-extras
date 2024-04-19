@@ -1,9 +1,8 @@
 ---
-layout: page
 title: Command Subsitution
+teaching: 10
 questions: 
 - "How to use command substitutions for arguments flexibility?"
-minutes: 15
 objectives: 
 - Understand the need for flexibility regarding arguments
 - Generate the values of the arguments on the fly using command substitution
