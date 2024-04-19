@@ -2,7 +2,7 @@
 title: AWK
 teaching: 20
 exercise: 5
-quesstions:  
+questions:  
 - "How to use AWK for text processing?"
 objectives:  
 - "Explain why AWK is useful and when it is better than pipes"
