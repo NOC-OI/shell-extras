@@ -1,7 +1,7 @@
 ---
-title: Command Subsitution
+title: "Command Subsitution"
 teaching: 10
-excercise: 5
+excercises: 5
 questions: 
 - "How to use command substitutions for arguments flexibility?"
 objectives: 

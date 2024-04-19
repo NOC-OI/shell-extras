@@ -1,7 +1,7 @@
 ---
-title: AWK
+title: "AWK"
 teaching: 20
-exercise: 5
+exercises: 5
 questions:  
 - "How to use AWK for text processing?"
 objectives:  
@@ -15,7 +15,7 @@ objectives:
 - "Use the for loop to cycle through an array"
 ---
 
-AWK is a tool for manipulating and filtering complex data. This chapter requires understanding of previous shell chapters and any programming language.
+AWK is a tool for manipulating and filtering complex data. It stands for Aho, Weinberger, and Kernighan, the designers of this prgoram. This chapter requires understanding of previous shell lessons and any programming language.
 
 Let's start.  
 
