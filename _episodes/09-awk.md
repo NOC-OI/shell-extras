@@ -1,5 +1,4 @@
 ---
-layout: page
 title: AWK
 teaching: 20
 exercises: 5
@@ -7,11 +6,11 @@ questions:
 - "How to use AWK for text processing?"  
 objectives:  
 - "Explain why AWK is useful and when it is better than pipes"
-- "Show a basic usage similar to the command "cut" "
+- "Show a basic usage similar to the command `cat` command"
 - "Introduce the filed separator parameter"
 - "Use regular expressions to perform different instructions"
 - "Introduce BEGIN and END keywords"
-- "Use the if then structure to change behaviour for the same matching regex"
+- "Use the `if-then` structure to change behaviour for the same matching regex"
 - "Introduce the array data structure"
 - "Use the for loop to cycle through an array"
 ---
@@ -30,7 +29,7 @@ $ wc -l example.txt
 As you probably remember, -l is an option that asks for the number of lines only.
 
 However, wc counts the number of newlines in the file, if the last line does
-not contain a carriage return (i.e. there is no emptyline at the end of the file),
+not contain a carriage return (i.e. there is no empty line at the end of the file),
 the result is going be the actual number of lines minus one.
 	
 A workaround is to use Awk. Awk is command line program that takes as input a set
@@ -45,7 +44,7 @@ Example:
 $ awk '{print $0}' example.txt
 ~~~
 
-This command has the same output of "cat": it prints each line from the example.txt
+This command has the same output as `cat`: it prints each line from the example.txt
 file.
 
 The structure of the instruction is the following:
@@ -97,21 +96,21 @@ $ awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.
 
 > ## Field separator 
 > Out there we have different file formats: our data may be comma separated (csv),
-> tab separated (tsv), by semicolon or by any other character.
+> tab separated (tsv), by a semicolon or by any other character.
 {: .callout}
 
-To specify the field separator, we should provide it at command line like:
+To specify the field separator, we should provide it at the command line like:
 
 ~~~ {.bash}
 $ awk -F "," '{print $2}' example2.txt
 ~~~
 
-In this case , we are printing the second field in each line, using comma as separator.
+In this case, we are printing the second field in each line, using comma as separator.
 Please notice that the character space is now part of the field value, since it is no
 longer the separator.
 
 > ## Matching lines
-> Maybe we would like to perform different instruction on different lines.
+> Maybe we would like to perform different instructions on different lines.
 {: .callout}
 
 Awk allows you to specify a matching pattern, like the command grep does.
@@ -122,7 +121,7 @@ Let's look at the file content
 $ awk '{print $0}' example.pdb
 ~~~
 
-It seems an abriged PDB file. If we would like to print only lines starting with the word
+It seems to be an abridged PDB file. If we would like to print only lines starting with the word
 "ATOM", we type:
 
 ~~~ {.bash}
@@ -132,7 +131,7 @@ awk '/^ATOM/ {print $0}' example.pdb
 In this case, we specify the pattern before the instructions: only lines starting with the
 text "ATOM". As you remember, ^ means "at the beginning of the line".
 
-We can specify more that one pattern:
+We can specify more than one pattern:
 
 ~~~ {.bash}
 awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' example.pdb
