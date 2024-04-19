@@ -1,5 +1,5 @@
 ---
-title: Aliases and bash customization
+title: Aliases and Bash Customization
 teaching: 10 minutes
 exercises: 0
 questions:

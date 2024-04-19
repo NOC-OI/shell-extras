@@ -1,5 +1,5 @@
 ---
-title: "AWK"
+title: AWK
 teaching: 20
 exercises: 5
 questions:  
@@ -8,7 +8,7 @@ objectives:
 - "Explain why AWK is useful and when it is better than pipes"
 - "Show a basic usage similar to the command "cut" "
 - "Introduce the filed separator parameter"
-- "Use regulax expressions to perform different instructions"
+- "Use regular expressions to perform different instructions"
 - "Introduce BEGIN and END keywords"
 - "Use the if then structure to change behaviour for the same matching regex"
 - "Introduce the array data structure"
@@ -94,9 +94,10 @@ Since NF is the number of the last field, $NF contains its value.
 $ awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
 ~~~
 
-> ## Field separator {.callout}
+> ## Field separator 
 > Out there we have different file formats: our data may be comma separated (csv),
 > tab separated (tsv), by semicolon or by any other character.
+{: .callout}
 
 To specify the field separator, we should provide it at command line like:
 
@@ -108,8 +109,9 @@ In this case , we are printing the second field in each line, using comma as sep
 Please notice that the character space is now part of the field value, since it is no
 longer the separator.
 
-> ## Matching lines {.callout}
+> ## Matching lines
 > Maybe we would like to perform different instruction on different lines.
+{: .callout}
 
 Awk allows you to specify a matching pattern, like the command grep does.
 

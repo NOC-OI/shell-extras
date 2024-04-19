@@ -1,5 +1,5 @@
 ---
-title: Job control
+title: Job Control
 teaching: 5
 exercises: 0
 questions:

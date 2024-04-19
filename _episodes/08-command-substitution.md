@@ -39,7 +39,7 @@ $ for cutoff in 0.001 0.01 0.05; do
 
 In the second example, the things to loop over: `"0.001 0.01 0.05"` are spelled out by you.
 
-## Looping over the words in a string {.callout}
+## Looping over the words in a string 
 >
 > In the previous example you can make your code neater and self-documenting by putting the cutoff values
 > in a separate string:
@@ -173,7 +173,7 @@ output works best within single commands and whitespace- or
 newline-separated words works best for lists over which to iterate in
 loops.
 
-> ## Generating filenames based on a timestamp {.challenge}
+> ## Generating filenames based on a timestamp
 > 
 > It can be useful to create the filename 'on the fly'. For instance, if
 > some program called `qualitycontrol` is run periodically (or
@@ -204,10 +204,9 @@ loops.
 > few times, waiting a few seconds between invocations (use the arrow-up
 > key to avoid having to retype the command)
 <!-- solution: cp file file.$(date +"%Y-%m-%d_%T") -->
+{: .challenge}
 
-
-## Juggling filename extensions {.challenge}
-
+> ## Juggling filename extensions
 > When running an analysis program with a certain input file, it
 > is often required that the output has the same name as the input, but with
 > a different filename extension, e.g.
@@ -237,6 +236,7 @@ loops.
 > ~~~
 > but for *each* of the `.pdb`-files.
 <!-- solution: for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done -->
+{: .challenge}
 
 ## Closing remarks
 
