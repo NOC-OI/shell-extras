@@ -13,14 +13,15 @@ objectives:
 - "Use the `if-then` structure to change behaviour for the same matching regex"
 - "Introduce the array data structure"
 - "Use the for loop to cycle through an array"
+keypoints:  
+
 ---
 
-AWK is a tool for manipulating and filtering complex data. It stands for Aho, Weinberger, and Kernighan, the designers of this prgoram. This chapter requires understanding of previous shell lessons and any programming language.
+AWK is a tool for manipulating and filtering complex data. It stands for Aho, Weinberger, and Kernighan, the designers of this program. This chapter requires understanding of previous shell lessons and any programming language.
 
 Let's start.  
 
-If we need to count the number of lines in a file, we can use the previously
-showed command for word counting wc
+If we need to count the number of lines in a file, we can use the previously shown command for word counting wc
 
 ~~~ {.bash}
 $ wc -l example.txt

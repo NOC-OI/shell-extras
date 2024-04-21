@@ -3,11 +3,13 @@ title: "Transferring Files"
 teaching: 10
 exercises: 0
 questions:
-- "How to use wget, curl and lftp to transfer file?"
+- "How to use wget, curl, and lftp to transfer files?"
 objectives:
-- "FIXME"
+- "To know different ways to interact with remote files"
 keypoints:
-- "FIXME"
+- "`wget` is the default tool, available in most Linux, to download file."
+- "`curl` is another tools to download file which support larger protocols."
+- "`lftp` is sosphisticated file transfer program with more capability including torrent support."
 ---
 
 There are other ways to interact with remote files other than git.
@@ -93,7 +95,7 @@ where:
 
 `-m` is for mirroring with time stamping, infinite recursion depth, and preservation of FTP directory settings
 `-k` converts links to make them suitable for local viewing 
-`-q` supresses the output to the screen
+`-q` suppresses the output to the screen
 
 The above command can also save the clone the contents of one domain to another
 if we are using ssh or sshfs to access a webserver. 

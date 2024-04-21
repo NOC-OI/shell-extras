@@ -7,7 +7,11 @@ questions:
 objectives: 
 - Understand the need for flexibility regarding arguments
 - Generate the values of the arguments on the fly using command substitution
-- Understand the difference between pipes/redirection, and the command substitution operator
+- Understand the difference between pipes/redirection and the command substitution operator
+keypoints: 
+- Command substitution can achieved by using dollar mark, `$(things to be replaced)`.  
+- Things to be replaced can be words and outputs of another command
+- Command substitution can be used for inputs and output of another command, but the output side must be modified to avoid file replacements.
 ---
 
 ## Introduction
@@ -162,15 +166,16 @@ simply because `cat cohort2010.txt | head -n 2` produces
 Everything between the `$(` and `)` is executed verbatim by the shell, so
 also the `-n 2` argument to the `head` command works as expected.
 
-### **Important**
-
-Recall from the *Loops* and the *Shell Scripts* topics that Unix uses
-whitespace to separate command, options (flags) and parameters /
-arguments.  For the same reason it is essential that the command (or
-pipeline) inside the backticks produces *clean* output: single word
-output works best within single commands and whitespace- or
-newline-separated words work best for lists over which to iterate in
-loops.
+> ## Important
+> 
+> Recall from the *Loops* and the *Shell Scripts* topics that Unix uses
+> whitespace to separate command, options (flags) and parameters /
+> arguments.  For the same reason it is essential that the command (or
+> pipeline) inside the backticks produces *clean* output: single word
+> output works best within single commands and whitespace- or
+> newline-separated words work best for lists over which to iterate in
+> loops.
+{: .callout}
 
 > ## Generating filenames based on a timestamp
 > 
