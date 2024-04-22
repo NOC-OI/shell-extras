@@ -86,9 +86,9 @@ For example, if a file had the following set of permissions:
 
 it would mean that:
 
-*   the file's owner can read and write it, but not run it;
-*   other people in the file's group can read it, but not modify it or run it; and
-*   everybody else can do nothing with it at all.
+* the file's owner can read and write it, but not run it;
+* other people in the file's group can read it, but not modify it or run it; and
+* everybody else can do nothing with it at all.
 
 Let's look at this model in action.
 If we `cd` into the `labs` directory and run `ls -F`,
@@ -98,13 +98,16 @@ i.e.,
 that it's (probably) something the computer can run.
 
 ~~~
-$ cd labs
-$ ls -F
+cd labs
+ls -F
 ~~~
+
 {: .bash}
+
 ~~~
 safety.txt    setup*     waiver.txt
 ~~~
+
 {: .output}
 
 > ## Necessary But Not Sufficient
@@ -124,14 +127,17 @@ safety.txt    setup*     waiver.txt
 Now let's run the command `ls -l`:
 
 ~~~
-$ ls -l
+ls -l
 ~~~
+
 {: .bash}
+
 ~~~
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
+
 {: .output}
 
 The `-l` flag tells `ls` to give us a long-form listing.
@@ -173,13 +179,15 @@ Here's a long-form listing showing the permissions on the final grades
 in the course Vlad is teaching:
 
 ~~~
-$ ls -l final.grd
+ls -l final.grd
 ~~~
+
 {: .bash}
 
 ~~~
 -rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
 ~~~
+
 {: .output}
 
 Whoops: everyone in the world can read it&mdash;and what's worse,
@@ -190,8 +198,9 @@ which would almost certainly not work.)
 The command to change the owner's permissions to `rw-` is:
 
 ~~~
-$ chmod u=rw final.grd
+chmod u=rw final.grd
 ~~~
+
 {: .bash}
 
 The 'u' signals that we're changing the privileges
@@ -201,60 +210,68 @@ A quick `ls -l` shows us that it worked,
 because the owner's permissions are now set to read and write:
 
 ~~~
-$ ls -l final.grd
+ls -l final.grd
 ~~~
+
 {: .bash}
 
 ~~~
 -rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
+
 {: .output}
 
 Let's run `chmod` again to give the group read-only permission:
 
 ~~~
-$ chmod g=r final.grd
-$ ls -l final.grd
+chmod g=r final.grd
+ls -l final.grd
 ~~~
+
 {: .bash}
 
 ~~~
 -rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
+
 {: .output}
 
 And finally,
-let's give "all" (everyone on the system who isn't the file's owner or in its group) no permissions at all:
+let's give "others" (everyone on the system who isn't the file's owner or in its group) no permissions at all:
 
 ~~~
-$ chmod a= final.grd
-$ ls -l final.grd
+chmod o= final.grd
+ls -l final.grd
 ~~~
+
 {: .bash}
 
 ~~~
 -rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
 ~~~
+
 {: .output}
 
 Here,
-the 'a' signals that we're changing permissions for "all",
+the 'o' signals that we're changing permissions for "others",
 and since there's nothing on the right of the "=",
-"all"'s new permissions are empty.
+"others"'s new permissions are empty.
 
 We can search by permissions, too.
 Here, for example, we can use `-type f -perm -u=x` to find files
 that the user can execute:
 
 ~~~
-$ find . -type f -perm -u=x
+find . -type f -perm -u=x
 ~~~
+
 {: .bash}
 
 ~~~
 ./tools/format
 ./tools/stats
 ~~~
+
 {: .output}
 
 Before we go any further,
@@ -262,8 +279,9 @@ let's run `ls -a -l`
 to get a long-form listing that includes directory entries that are normally hidden:
 
 ~~~
-$ ls -a -l
+ls -a -l
 ~~~
+
 {: .bash}
 
 ~~~
@@ -273,6 +291,7 @@ drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
+
 {: .output}
 
 The permissions for `.` and `..` (this directory and its parent) start with a 'd'.
@@ -322,15 +341,17 @@ Some modern variants of Unix support ACLs as well as the older read-write-execut
 but hardly anyone uses them.
 
 > ## Challenge
+>
 > If `ls -l myfile.php` returns the following details:
 >
 > ~~~
 > -rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
 > ~~~
+>
 > {: .output}
-> 
+>
 > Which of the following statements is true?
-> 
+>
 > 1. caro (the owner) can read, write, and execute myfile.php
 > 2. caro (the owner) cannot write to myfile.php
 > 3. members of caro (a group) can read, write, and execute myfile.php
