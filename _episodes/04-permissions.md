@@ -328,12 +328,33 @@ Shebang is the #! syntax used in scripts to indicate an interpreter for executio
 
 ~~~{.bash}
 #!/bin/bash
-# OR
+~~~
+
+or,
+
+~~~{.bash}
 #!/usr/bin/env bash
 ~~~
 
-at the top of script. The second approach is more portable and recommended. For
-instance check the `file_info.sh` script in the `code` directory. First,
+at the top of the script. The second approach is more portable and recommended.
+For instance, check the `file_info.sh` script in the `code` directory.
+First, after creating or downloading the script, we need to make it executable using `chmod` command.
+
+~~~{.bash}
+chmod u+x file_info.sh
+~~~
+
+The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
+Then we can run the script using the following command:
+
+~~~{.bash}
+./file_info.sh example.txt
+~~~
+
+Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
+We still run the code without shebang, i.e., by telling the interpreter to run the code,
+e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
+is given, or the permission is not given, the code will not run ("Permission denied" error).
 
 ## What about Windows?
 
