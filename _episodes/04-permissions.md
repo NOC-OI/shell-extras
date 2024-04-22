@@ -322,6 +322,19 @@ She's allowed to go through `pluto`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 
+## Shebang
+
+Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+
+~~~{.bash}
+#!/bin/bash
+# OR
+#!/usr/bin/env bash
+~~~
+
+at the top of script. The second approach is more portable and recommended. For
+instance check the `file_info.sh` script in the `code` directory. First,
+
 ## What about Windows?
 
 Those are the basics of permissions on Unix.
