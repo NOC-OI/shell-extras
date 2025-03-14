@@ -1,38 +1,43 @@
 ---
 title: AWK
-questions: 
-- How to manipulate and filtering complex data
-teaching: 15
-exercises: 0
-objectives:
-- Explain why AWK is useful and when it is better than pipes.
-- Show a basic usage similar to the command "cut"
-- Introduce the filed separator parameter.
-- Use regulax expressions to perform different instructions.
-- Introduce BEGIN and END keywords.
-- Use the if then structure to change behaviour for the same matching regex.
-- Introduce the array data structure.
-- Use the for loop to cycle through an array
-keypoints:
-- Awk is a useful utility for breaking up data into subfields.
-- Awk can search for certain text to only process certain lines of a file.
+teaching: 20
+exercises: 5
+questions:  
+- "How to use AWK for text processing?"  
+objectives:  
+- "Explain why AWK is useful and when it is better than pipes"
+- "Show a basic usage similar to the command `cat` command"
+- "Introduce the filed separator parameter"
+- "Use regular expressions to perform different instructions"
+- "Introduce BEGIN and END keywords"
+- "Use the `if-then` structure to change behaviour for the same matching regex"
+- "Introduce the array data structure"
+- "Use the for loop to cycle through an array"
+keypoints:  
+- awk can be used to manipulate and filter data, e.g. adding text or printing specific columns
+- NF is a variable that stores the number of fields in the current line
+- Field separator can be specified with the `-F` option, default is space
+- Matching patterns can be specified with `/^PATTERN/` instruction
 ---
 
-If we need to count the number of lines in a file, we can use the previously
-showed command for word counting wc
+AWK is a tool for manipulating and filtering complex data. It stands for Aho, Weinberger, and Kernighan, the designers of this program. This chapter requires understanding of previous shell lessons and any programming language.
 
-~~~ 
-$ wc -l example.txt
+Let's start. The `example.txt` for exercise is available under `data` directory. You can also download it from [here](../data/example.txt).
+
+If we need to count the number of lines in a file, we can use the previously shown command for word counting `wc`.
+
+~~~ {.bash}
+wc -l example.txt
 ~~~
 {: .bash}
 
 As you probably remember, -l is an option that asks for the number of lines only.
 
 However, wc counts the number of newlines in the file, if the last line does
-not contain a carriage return (i.e. there is no emptyline at the end of the file),
+not contain a carriage return (i.e. there is no empty line at the end of the file),
 the result is going be the actual number of lines minus one.
-	
-A workaround is to use Awk. Awk is command line program that takes as input a set
+
+A workaround is to use Awk. Awk is a command line program that takes as input a set
 of instructions and one or more files. The instructions are executed on each line
 of the input file(s).
 
@@ -40,23 +45,24 @@ The instructions are enclosed in single quotes or they can be read from a file.
 
 Example:
 
-~~~ 
-$ awk '{print $0}' example.txt
+~~~ {.bash}
+awk '{print $0}' example.txt
 ~~~
 {: .bash}
 
 
-This command has the same output of "cat": it prints each line from the example.txt
+This command has the same output as `cat`: it prints each line from the example.txt
 file.
 
 The structure of the instruction is the following:
+
 - curly braces surround the set of instructions
 - print is the instruction that sends its arguments to the terminal
 - $0 is a variable, it means "the content of the current line"
 
 As you can see, the file contains a table.
 
-Awk automatically splits the processed line by looking at spaces: in our case it has
+Awk automatically splits the processed line by looking at spaces: in our case, it has
 knowledge of the different columns in the table.
 
 Each column value for the current line is stored into a variable: $1 for the first
@@ -64,15 +70,15 @@ column, $2 for the second and so on.
 
 So, if we like to print only the second column from the table, we execute
 
-~~~
-$ awk '{print $2}' example.txt
+~~~ {.bash}
+awk '{print $2}' example.txt
 ~~~
 {: .bash}
 
-We can also print more than one value, or add text to the printed line:
+We can also print more than one value, or add text (e.g. "chr") to the printed line:
 
 ~~~
-$ awk '{print "chr",$2,$4}' example.txt
+awk '{print "chr",$2,$4}' example.txt
 ~~~
 {: .bash}
 
@@ -88,7 +94,7 @@ Awk helps us thanks to the variable NF. NF stores the number of fields (our colu
 row. Let's see for our table:
 
 ~~~
-$ awk '{print NF}' example.txt
+awk '{print NF}' example.txt
 ~~~
 {: .bash}
 
@@ -96,19 +102,21 @@ We can see that some lines contain 6 fields while others contain 7 of them.
 Since NF is the number of the last field, $NF contains its value.
 
 ~~~
-$ awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
+awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
+>>>>>>> e24112585e429efa738cf9ebb5a9826e4916f269:_episodes/09-awk.md
 ~~~
 {: .bash}
 
-> ## Field separator 
+> ## Field separator
+>
 > Out there we have different file formats: our data may be comma separated (csv),
-> tab separated (tsv), by semicolon or by any other character.
+> tab separated (tsv), by a semicolon or by any other character.
 {: .callout}
 
-To specify the field separator, we should provide it at command line like:
+To specify the field separator, we should provide it at the command line like:
 
 ~~~
-$ awk -F "," '{print $2}' example2.txt
+awk -F "," '{print $2}' example2.txt
 ~~~
 {: .bash}
 
@@ -116,12 +124,16 @@ In this case, we are printing the second field in each line, using comma as
 separator. Please notice that the character space is now part of the field 
 value, since it is no longer the separator.
 
+> ## Matching lines
+>
+> Maybe we would like to perform different instructions on different lines.
+{: .callout}
 Awk allows you to specify a matching pattern, like the command grep does.
 
 Let's look at the file content
 
 ~~~
-$ awk '{print $0}' example.pdb
+awk '{print $0}' methane.pdb
 ~~~
 {: .bash}
 
@@ -137,10 +149,10 @@ In this case, we specify the pattern before the instructions: only lines
 starting with the text "ATOM". As you remember, ^ means "at the beginning of 
 the line".
 
-We can specify more that one pattern:
+We can specify more than one pattern:
 
-~~~ 
-awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' example.pdb
+~~~
+awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' methane.pdb
 ~~~
 {: .bash}
 

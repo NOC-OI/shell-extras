@@ -3,16 +3,16 @@ title: "Transferring Files"
 teaching: 15
 exercises: 10
 questions:
-- "How to use wget, curl and rsync to transfer file?"
+- "How to use wget, curl, and lftp to transfer files?"
 objectives:
-- "Understand that wget, curl and rsync can transfer files"
+- "To know different ways to interact with remote files"
 keypoints:
-- "wget is a utility for downloading remote webpages. 
-It includes options to mirror an entire site."
-- "curl is another utility for downloading remote webpages. 
+- "`wget` is the default tool, available in most Linux distributions, 
+to download files from web and FTP servers."
+- "`curl` is another utility for downloading remote webpages. 
 It defaults to outputting the result on screen, this can be piped to other 
 programs."
-- "rsync is a utility for transferring files. It can use the SSH protocol and 
+- "`rsync` is a utility for transferring files. It can use the SSH protocol and 
 is useful for mirroring complicated directory structures from one computer to 
 another."
 ---
@@ -101,7 +101,7 @@ where:
 
 `-m` is for mirroring with time stamping, infinite recursion depth, and preservation of FTP directory settings
 `-k` converts links to make them suitable for local viewing 
-`-q` supresses the output to the screen
+`-q` suppresses the output to the screen
 
 The above command can also save the clone the contents of one domain to another
 if we are using ssh or sshfs to access a webserver. 

@@ -1,20 +1,20 @@
 ---
-title: Command Substitution
+title: "Command Substitution"
+teaching: 10
+exercises: 5
 questions: 
-- How to substitute variables with command outputs.
-teaching: 15
-exercises: 0
-objectives:
+- "How to use command substitutions for arguments flexibility?"
+objectives: 
 - Understand the need for flexibility regarding arguments
 - Generate the values of the arguments on the fly using command substitution
-- Understand the difference between pipes/redirection, and the command 
+- Understand the difference between pipes/redirection and the command 
 substitution operator
-keypoints:
-- We can substitue variables for the output of commands using the $(command) 
-syntax.
-- We can loop through sets of values in a "parameter sweep".
-- For loops can take a single variable with space separated arguments and treat
- each as a separate item to iterate over.
+keypoints: 
+- Command substitution can achieved by using dollar mark, 
+`$(things to be replaced)`.
+- Things to be replaced can be words and outputs of another command
+- Command substitution can be used for inputs and output of another command, 
+but the output side must be modified to avoid file replacements.
 ---
 
 ## Introduction
@@ -53,7 +53,7 @@ $ for cutoff in 0.001 0.01 0.05; do
 In the second example, the things to loop over: `"0.001 0.01 0.05"` 
 are spelled out by you.
 
-## Looping over the words in a string
+## Looping over the words in a string 
 >
 > In the previous example you can make your code neater and self-documenting by
 > putting the cutoff values in a separate string:
@@ -72,10 +72,10 @@ However, you don't always know in advance *what* you have to loop
 over. It could well be that it is not a simple file name pattern (in
 which case you can use wildcards), or that it is not a small, known set
 of values (in which case you can write them out explicitly as was done
-in the second example).  It would therefore be nice if you could loop
+in the second example).  It would, therefore be nice if you could loop
 over filenames or over words contained in a file. Suppose that file
-`cohort2010.txt` contains the filenames over which to iterate, then it
-would be nice to able to say something like:
+`cohort2010.txt` contains the filenames over which to iterate; then it would 
+be nice to able to say something like:
 
 ~~~
 # (imaginary syntax)
@@ -90,7 +90,7 @@ $ for file in [INSERT THE CONTENTS OF cohort2010.txt HERE]
 
 This would be more general, more flexible and more tractable than
 relying on the wildcard mechanism. What we need, therefore, is a
-mechanism that actually replaces everytying beween `[` and `]` with the
+mechanism that actually replaces everything between `[` and `]` with the
 desired names of input files, just before the loop starts.  Thankfully,
 this mechanism exists, and it is called the **command substitution operator**
 (previously written using the **backtick operator**). It looks much like the 
@@ -115,7 +115,7 @@ replaced with simple spaces.
 In legacy code, you may see the same construct but with a
 different syntax. It starts and ends with backticks, `` ` `` (not to be
 confused with the single quote `'` !).  The backticks work exactly the
-same as the command substitution done by `$(` and `)`. However its use
+same as the command substitution done by `$(` and `)`. However, its use
 is discouraged as backticks cannot be nested.
 
 ## Example
@@ -197,13 +197,13 @@ output works best within single commands and whitespace- or
 newline-separated words works best for lists over which to iterate in
 loops.
 
-> > ## Generating filenames based on a timestamp 
+> ## Generating filenames based on a timestamp
 >
 > It can be useful to create the filename 'on the fly'. For instance, if
 > some program called `qualitycontrol` is run periodically (or
 > unpredictably) it may be necessary to supply the time stamp as an
 > argument to keep all the output files apart, along the following lines:
-> 
+>
 > ~~~
 > qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
 > ~~~
@@ -220,9 +220,9 @@ loops.
 > ~~~
 > $ date +"%Y-%m-%d_%T"
 > ~~~
-> 
+>
 > (Try it).
-> 
+>
 > Write the command that will copy a file of your choice to a new file
 > whose name contains the time stamp. Test it by executing the command a
 > few times, waiting a few seconds between invocations (use the arrow-up
@@ -237,37 +237,7 @@ loops.
 {: .challenge}
 
 
-> ## Juggling filename extensions 
-> When running an analysis program with a certain input file, it
-> is often required that the output has the same name as the input, but with
-> a different filename extension, e.g.
->
-> ~~~
-> $ run_classifier.sh --input patient1048338.txt --pvalue -0.05 --output patient1048338.results
-> ~~~
->
-> A good trick here is to use the Unix `basename` command. It takes a string 
-> (typically a filename), and strips off the given extension (if it is part 
-> of the input string). Example:
-> ~~~ 
-> $ basename patient1048338.txt    .txt
-> ~~~
-> {: .bash}
-> gives
-> ~~~ 
-> patient1048338
-> ~~~
-> {: .output}
->
->
-> Write a loop that uses the command substitution operator and the
-> `basename` command to sort each of the `*.pdb` files into a
-> corresponding `*.sorted` file. That is, make the loop do the
-> following:
-> ~~~
-> $ sort ammonia.pdb > ammonia.sorted
-> ~~~
-> but for *each* of the `.pdb`-files.
+> ## Juggling filename extensions
 >
 > > ## Solution
 > > ~~~
@@ -278,12 +248,11 @@ loops.
 {: .challenge}
 
 ## Closing remarks
-
-The command subsitution operator provides us with a
+The command substitution operator provides us with a
 powerful new piece of 'plumbing' that allows us to connect "small
 pieces, loosely together" to keep with the Unix philosophy.  It is remotely
 similar to the `|` operator in the sense that it connects two
 programs. But there is also a clear difference: `|` connects the
 standard output of one command to the standard input of another command,
-where as `` $(command) `` is substituted 'in-place' into the the shell
-script, and always provides parameters, options, arguments to other commands.
+where as `` $(command) `` is substituted 'in-place' into the shell script, and 
+always provides parameters, options, and arguments to other commands.
