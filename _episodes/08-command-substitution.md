@@ -3,18 +3,18 @@ title: "Command Substitution"
 teaching: 10
 exercises: 5
 questions: 
-- "How to use command substitutions for arguments flexibility?"
+- "How to use command substitutions for arguments flexibly?"
 objectives: 
-- Understand the need for flexibility regarding arguments
-- Generate the values of the arguments on the fly using command substitution
-- Understand the difference between pipes/redirection and the command 
-substitution operator
-keypoints: 
-- Command substitution can achieved by using dollar mark, 
-`$(things to be replaced)`.
-- Things to be replaced can be words and outputs of another command
-- Command substitution can be used for inputs and output of another command, 
-but the output side must be modified to avoid file replacements.
+- "Understand the need for flexibility regarding arguments"
+- "Generate the values of the arguments on the fly using command substitution"
+- "Understand the difference between pipes/redirection and the command 
+substitution operator"
+keypoints:
+- "Command substitution can achieved by using dollar mark, 
+`$(things to be replaced)`."
+- "Things to be replaced can be words and outputs of another command"
+- "Command substitution can be used for inputs and output of another command, 
+but the output side must be modified to avoid file replacements."
 ---
 
 ## Introduction
