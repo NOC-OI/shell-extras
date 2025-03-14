@@ -12,7 +12,8 @@ objectives:
 keypoints:
 - "Shell variables are by default treated as strings"
 - "The `PATH` variable defines the shell's search path"
-- "Variables are assigned using \"`=`\" and recalled using the variable's name prefixed by \"`$`\""
+- "Variables are assigned using \"`=`\" and recalled using the variable's name 
+prefixed by \"`$`\""
 ---
 
 The shell is just a program, and like other programs, it has variables.
@@ -20,7 +21,8 @@ Those variables control its execution,
 so by changing their values
 you can change how the shell and other programs behave.
 
-Let's start by running the command `set` and looking at some of the variables in a typical shell session:
+Let's start by running the command `set` and looking at some of the variables 
+in a typical shell session:
 
 ~~~
 $ set
@@ -43,29 +45,29 @@ USERNAME=vlad
 ~~~
 {: .output}
 
-As you can see, there are quite a few&mdash;in fact, four or five times more than what's shown here.
-And yes,
-using `set` to *show* things might seem a little strange,
-even for Unix,
-but if you don't give it any arguments,
+As you can see, there are quite a few&mdash;in fact, four or five times more 
+than what's shown here. And yes, using `set` to *show* things might seem a 
+little strange, even for Unix, but if you don't give it any arguments,
 it might as well show you things you *could* set.
 
 Every variable has a name.
 By convention, variables that are always present are given upper-case names.
-All shell variables' values are strings, even those (like `UID`) that look like numbers.
-It's up to programs to convert these strings to other types when necessary.
-For example, if a program wanted to find out how many processors the computer had,
-it would convert the value of the `NUMBER_OF_PROCESSORS` variable from a string to an integer.
+All shell variables' values are strings, even those (like `UID`) that look 
+like numbers. It's up to programs to convert these strings to other types 
+when necessary. For example, if a program wanted to find out how many 
+processors the computer had, it would convert the value of the 
+`NUMBER_OF_PROCESSORS` variable from a string to an integer.
 
 Similarly, some variables (like `PATH`) store lists of values.
 In this case, the convention is to use a colon ':' as a separator.
-If a program wants the individual elements of such a list,
-it's the program's responsibility to split the variable's string value into pieces.
+If a program wants the individual elements of such a list, it's the 
+program's responsibility to split the variable's string value into pieces.
 
 ## The `PATH` Variable
 
 Let's have a closer look at that `PATH` variable.
-Its value defines the shell's [search path]({{ page.root }}/reference/{{ site.index }}#search-path),
+Its value defines the shell's 
+[search path]({{ page.root }}/reference/{{ site.index }}#search-path),
 i.e., the list of directories that the shell looks in for runnable programs
 when you type in a program name without specifying what directory it is in.
 
@@ -167,8 +169,8 @@ Camilla
 {: .output}
 
 If we want to set some variables automatically every time we run a shell,
-we can put commands to do this in a file called `.bashrc` in our home directory.
-(The '.' character at the front prevents `ls` from listing this file
+we can put commands to do this in a file called `.bashrc` in our home 
+directory. (The '.' character at the front prevents `ls` from listing this file
 unless we specifically ask it to using `-a`:
 we normally don't want to worry about it.
 The "rc" at the end is an abbreviation for "run control",
@@ -194,9 +196,9 @@ so that if we change where we put temporary files,
 our backups will be relocated automatically.
 
 While we're here,
-it's also common to use the `alias` command to create shortcuts for things we frequently type.
-For example, we can define the alias `backup`
-to run `/bin/zback` with a specific set of arguments:
+it's also common to use the `alias` command to create shortcuts for things we 
+frequently type. For example, we can define the alias `backup` to run 
+`/bin/zback` with a specific set of arguments:
 
 ~~~
 alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR

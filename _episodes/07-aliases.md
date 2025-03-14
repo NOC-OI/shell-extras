@@ -1,6 +1,6 @@
 ---
 title: Aliases and bash customization
-teaching: 10 minutes
+teaching: 10
 exercises: 0
 questions:
 - How do I customize my bash environment?
@@ -72,7 +72,8 @@ login shells.  If the `.bash_logout` file exists, then it will be run
 after exiting a shell session.
 
 Let's add the above commands to our `.bashrc` file.
-Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one `>` which would overwrite.
+Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one 
+`>` which would overwrite.
 ~~~
 echo "alias up='cd ..'" >> ~/.bashrc
 tail -n 1 ~/.bashrc
@@ -84,7 +85,8 @@ alias up='cd ..'
 ~~~
 {: .output}
 
-We can execute the commands in `.bashrc` using `source`, so this creates the alias `up` which we can then use in directory `/usr/local/bin`:
+We can execute the commands in `.bashrc` using `source`, so this creates the 
+alias `up` which we can then use in directory `/usr/local/bin`:
 
 ~~~
 source ~/.bashrc
@@ -123,8 +125,8 @@ export PS1="$ "
 To set the prompt to `$ ` for all bash sessions, add this line to the
 end of `.bashrc`.
 
-Further [bash prompt
-customizations](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt)
+Further [bash prompt customizations]
+(https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt)
 are possible.  To have our prompt be `username@hostname[directory]: `,
 we would set
 
