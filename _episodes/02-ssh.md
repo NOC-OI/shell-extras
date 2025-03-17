@@ -38,15 +38,15 @@ To do this,
 we have to first log in to that machine.
 We call this a [remote login]({{ page.root }}/reference/{{ site.index }}#remote-login).
 
-In order for us to be able to login, the remote computer must be running 
+In order for us to be able to login, the remote computer must be running
 a [remote login server]({{ page.root }}/reference/{{ site.index }}#remote-login-server) and we will
 run a client program that can talk to that server.
 The client program passes our login credentials to the remote login server
-and, if we are allowed to login, that server then runs a shell for us on the 
+and, if we are allowed to login, that server then runs a shell for us on the
 remote computer.
 
 Once our local client is connected to the remote server,
-everything we type into the client is passed on, by the server, to the shell 
+everything we type into the client is passed on, by the server, to the shell
 running on the remote computer.
 That remote shell runs those commands on our behalf,
 just as a local shell would,
@@ -75,15 +75,15 @@ is known as the [SSH daemon]({{ page.root }}/reference/{{ site.index }}#ssh-daem
 
 The client program we use to login remotely is
 the [secure shell]({{ page.root }}/reference/{{ site.index }}#secure-shell),
-or `ssh`, think (`s`)ecure `sh`. 
+or `ssh`, think (`s`)ecure `sh`.
 
-The `ssh` login client has a companion program called `scp`, think  (`s`)ecure `cp`, 
+The `ssh` login client has a companion program called `scp`, think  (`s`)ecure `cp`,
 which allows us to copy files to or from a remote computer using the same kind of encrypted connection.
 
 
 ## A remote login using `ssh`
 
-To make a remote login, we issue the command `ssh username@computer` 
+To make a remote login, we issue the command `ssh username@computer`
 which tries to make a connection to the SSH daemon running on the remote computer we have specified.
 
 After we log in,
@@ -164,15 +164,15 @@ $ pwd
 > Open a connection to a remote system you have access to.
 >
 > The first time you connect to a remote computer you will see a message saying
-> that the authenticity of the host can't be established. This is normal 
-> because you've never connected to that computer before, so we have no record 
-> of the key fingerprint which identifies that computer. If you receive this 
+> that the authenticity of the host can't be established. This is normal
+> because you've never connected to that computer before, so we have no record
+> of the key fingerprint which identifies that computer. If you receive this
 > message on a subsequent connection then it is a sign that the remote computer
 > has been changed (most likely the OS was reinstalled, but the system *could*
-> have been hacked) or (much less likely) that somebody is interfering with 
-> the encryption of your connection. To accept the fingerprint of the remote 
+> have been hacked) or (much less likely) that somebody is interfering with
+> the encryption of your connection. To accept the fingerprint of the remote
 > system you must type "yes".
-> 
+>
 {: .challenge}
 
 > ## Differences between remote and local system
@@ -188,9 +188,9 @@ $ pwd
 > > ## Solution
 > >
 > > You might find that the prompt has different information and if it displays
-> >  a host (computer) name then this should be different. This is very 
+> >  a host (computer) name then this should be different. This is very
 > > important for making sure you know what system you are issuing commands on
-> > when in the shell. You might also find the colours are different, 
+> > when in the shell. You might also find the colours are different,
 > > especially when running the `ls` command.
 > {: .solution}
 {: .challenge}
@@ -217,7 +217,7 @@ results.dat              100%  9  1.0 MB/s 00:00
 ~~~
 {: .output}
 
-Note the colon `:`, seperating the hostname of the server and the pathname of 
+Note the colon `:`, seperating the hostname of the server and the pathname of
 the file we are copying to.
 It is this character that informs `scp` that the source or target of the copy is
 on the remote machine and the reason it is needed can be explained as follows:
@@ -226,15 +226,15 @@ In the same way that the default directory into which we are placed when running
 a shell on a remote machine is our home directory on that machine, the default
 target, for a remote copy, is also the  home directory.
 
-This means that 
+This means that
 
 ~~~
 $ scp results.dat vlad@backupserver:
 ~~~
 {: .bash}
 
-would copy `results.dat` into our home directory on `backupserver`, however, 
-if we did not have the colon to inform `scp` of the remote machine, we would 
+would copy `results.dat` into our home directory on `backupserver`, however,
+if we did not have the colon to inform `scp` of the remote machine, we would
 still have a valid commmad.
 
 ~~~
@@ -242,7 +242,7 @@ $ scp results.dat vlad@backupserver
 ~~~
 {: .bash}
 
-but now we have merely created a file called `vlad@backupserver` on our local 
+but now we have merely created a file called `vlad@backupserver` on our local
 machine, as we would have done with `cp`.
 
 ~~~
@@ -250,9 +250,9 @@ $ cp results.dat vlad@backupserver
 ~~~
 {: .bash}
 
-Copying a whole directory betwen remote machines uses the same syntax as the 
-`cp` command: we just use the `-r` option to signal that we want copying to 
-be recursively. For example, this command copies all of our results from the 
+Copying a whole directory betwen remote machines uses the same syntax as the
+`cp` command: we just use the `-r` option to signal that we want copying to
+be recursively. For example, this command copies all of our results from the
 backup server to our laptop:
 
 ~~~
@@ -270,7 +270,7 @@ results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 {: .output}
 
 > ## Choose the right command
-> Which of the following would you use to copy a directory called `data` and 
+> Which of the following would you use to copy a directory called `data` and
 > all the files and subdirectories contained within it to the `/data` directory
 > on a remote computer called `datastore.euphoric.edu`:
 >
@@ -282,11 +282,11 @@ results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 > > ## Solution
 > > 3 is the correct answer.
 > >
-> > 1 does not have `-r` option to copy all subdirectories and is missing the 
-> > `:` to specify the path on the remote computer. It will create a file 
+> > 1 does not have `-r` option to copy all subdirectories and is missing the
+> > `:` to specify the path on the remote computer. It will create a file
 > > called `vlad@datastore.euphoric.edu` on the local computer.
 > >
-> > 2 uses the `cp` command instead of `scp`, it will only copy files on the 
+> > 2 uses the `cp` command instead of `scp`, it will only copy files on the
 > > local computer.
 > >
 > > 4 is missing the `-r` option to copy the subdirectories and doesn't specify
@@ -308,7 +308,7 @@ Password: ********
 ~~~
 {: .bash}
 
-~~~ 
+~~~
 results-2011-09-18.dat  results-2011-10-28.dat
 results-2011-10-04.dat  results-2011-11-11.dat
 ~~~
@@ -427,7 +427,7 @@ Password: ********
 ~~~
 {: .bash}
 
-Paste the content that you copy at the end of `~/.ssh/authorized_keys`. 
+Paste the content that you copy at the end of `~/.ssh/authorized_keys`.
 
 ~~~
     moon> nano ~/.ssh/authorized_keys
@@ -447,17 +447,17 @@ $ ssh vlad@moon.euphoric.edu
 ~~~
 {: .bash}
 
-> ## Add (or change) a key's passphrase 
+> ## Add (or change) a key's passphrase
 > Add a passphrase your key with the command `ssh-keygen -p`.
 >
-> Now attempt to login to a remote computer, you should be prompted to enter 
+> Now attempt to login to a remote computer, you should be prompted to enter
 > your passphrase.
 {: .challenge}
 
 
 ## SSH Files and Directories
 
-The example of copying our public key to a remote machine, so that it 
+The example of copying our public key to a remote machine, so that it
 can then be used when we next SSH into that remote machine, assumed
 that we already had a directory `~/.ssh/`.
 
@@ -538,7 +538,7 @@ Password: ********
 
 Note that the default target for the `scp` command on a remote
 machine is the home directory, so we have not needed to use the
-shorthand `~/.ssh/` or even the full path `/home/vlad/.ssh/` to 
+shorthand `~/.ssh/` or even the full path `/home/vlad/.ssh/` to
 our home directory there.
 
 Checking the permissions of the file we have just created on
@@ -556,7 +556,7 @@ $ ssh vlad@comet "ls -l ~/.ssh"
 ~~~
 {: .output}
 
-Whilst the authorized keys file is not considered to be highly sensitive, 
+Whilst the authorized keys file is not considered to be highly sensitive,
 (after all, it contains public keys), we alter the permissions to match
 the man page's recommendations
 

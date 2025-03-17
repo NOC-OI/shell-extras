@@ -10,9 +10,9 @@ objectives:
 - "How to change permissions?"
 - "File/directory permissions in Windows"
 keypoints:
-- "Correct permissions are critical for the security of a system." 
+- "Correct permissions are critical for the security of a system."
 - "File permissions describe who and what can read, write, modify, and access a file."
-- "Use `ls -l` to view the permissions for a specific file." 
+- "Use `ls -l` to view the permissions for a specific file."
 - "Use `chmod` to change permissions on a file or directory."
 ---
 

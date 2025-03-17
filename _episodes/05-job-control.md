@@ -6,7 +6,7 @@ questions:
 - "How do keep track of the process running on my machine?"
 - "Can I run more than one program/script from within a shell?"
 objectives:
-- "Learn how to use `ps` to get information about the state of processes" 
+- "Learn how to use `ps` to get information about the state of processes"
 - "Learn how to control, ie., \"stop/pause/background/foreground\" processes"
 keypoints:
 - "When we talk of 'job control', we really mean 'process control'"
@@ -21,7 +21,7 @@ the shell's command line.
 
 We'll now take a look at how to control programs *once they're running*. This
 is called [job control]({ page.root }}/reference/{{ site.index }}#job-control),
- and while it's less important today than it was back in the Dark Ages, it is 
+and while it's less important today than it was back in the Dark Ages, it is
 coming back into its own as more people begin to leverage the power of computer
 networks.
 
@@ -33,7 +33,7 @@ web browser. Many others belong to the operating system that manages
 your computer for you, or, if you're on a shared machine, to other
 users.
 
-## The `ps` command 
+## The `ps` command
 
 You can use the `ps` command to list processes, just as you use `ls`
 to list files and directories.
@@ -248,7 +248,7 @@ time. It's less important now: if we want to run another program, it's
 easy enough to open another window and run it there. However, these
 ideas and tools are making a comeback, as they're often the easiest way
 to run and control programs on remote computers elsewhere on the
-network. This lesson's [ssh episode]({{ page.root }}/02-ssh/{{ site.index }}) 
+network. This lesson's [ssh episode]({{ page.root }}/02-ssh/{{ site.index }})
 has more to say about that.
 
 {% include links.md %}
