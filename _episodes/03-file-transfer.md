@@ -138,7 +138,7 @@ curl -o filename_for_local_machine target_url
 where the `-o` option says write the output to a file instead of the stdout
 (the screen), and file_name_for_local_machine is any file name you choose to
 save to the local machine, and target_URL is where the file is the URL where
-the file is on the web
+the file is on the web.
 
 Removing the `-o` option, and following the syntax `curl target_URL`
 outputs the contents of the url to the screen.
