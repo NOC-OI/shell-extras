@@ -10,14 +10,14 @@ keypoints:
 - "FIXME"
 ---
 
-All Unix files are integrated in a single directory structure. The file-system 
-is arranged in a structure like an inverted tree. The top of this tree is the 
+All Unix files are integrated in a single directory structure. The file-system
+is arranged in a structure like an inverted tree. The top of this tree is the
 root and is written as a slash ‘/’.
 
 ## The `tree` command
 
-The tree command shows a nice representation of all files and sub-directories 
-in the current directory. Here is an example of it running on the 
+The tree command shows a nice representation of all files and sub-directories
+in the current directory. Here is an example of it running on the
 shell-lesson-data from the Unix shell Carpentries Lesson.
 
 ~~~

@@ -10,9 +10,9 @@ objectives:
 - "How to change permissions?"
 - "File/directory permissions in Windows"
 keypoints:
-- "Correct permissions are critical for the security of a system." 
+- "Correct permissions are critical for the security of a system."
 - "File permissions describe who and what can read, write, modify, and access a file."
-- "Use `ls -l` to view the permissions for a specific file." 
+- "Use `ls -l` to view the permissions for a specific file."
 - "Use `chmod` to change permissions on a file or directory."
 ---
 
@@ -328,9 +328,9 @@ but hardly anyone uses them.
 > -rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
 > ~~~
 > {: .output}
-> 
+>
 > Which of the following statements is true?
-> 
+>
 > 1. caro (the owner) can read, write, and execute myfile.php
 > 2. caro (the owner) cannot write to myfile.php
 > 3. members of caro (a group) can read, write, and execute myfile.php
