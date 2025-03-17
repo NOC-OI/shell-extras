@@ -7,14 +7,11 @@ exercises: 0
 objectives:
 - Understand the need for flexibility regarding arguments
 - Generate the values of the arguments on the fly using command substitution
-- Understand the difference between pipes/redirection, and the command
-substitution operator
+- Understand the difference between pipes/redirection, and the command substitution operator
 keypoints:
-- We can substitue variables for the output of commands using the $(command)
-syntax.
+- We can substitue variables for the output of commands using the $(command) syntax.
 - We can loop through sets of values in a "parameter sweep".
-- For loops can take a single variable with space separated arguments and treat
-each as a separate item to iterate over.
+- For loops can take a single variable with space separated arguments and treat each as a separate item to iterate over.
 ---
 
 ## Introduction
