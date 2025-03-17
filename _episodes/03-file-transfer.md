@@ -3,11 +3,11 @@ title: "Transferring Files"
 teaching: 15
 exercises: 10
 questions:
-- "How to use wget, curl and rsync to transfer file?"
+- "How to use Wget, curl and rsync to transfer file?"
 objectives:
-- "Understand that wget, curl and rsync can transfer files"
+- "Understand that Wget, curl and rsync can transfer files"
 keypoints:
-- "wget is a utility for downloading remote webpages.
+- "Wget is a utility for downloading remote webpages.
 It includes options to mirror an entire site."
 - "curl is another utility for downloading remote webpages.
 It defaults to outputting the result on screen, this can be piped to other
@@ -167,12 +167,12 @@ $ wget -q -D carpentries-incubator.github.io -O /dev/stdout https://carpentries-
 ~~~
 {: .bash}
 
-`Wget` offers more functionality natively than `curl` for retrieving entire
-directories. We could use `Wget` to first retrieve an entire directory and
+`wget` offers more functionality natively than `curl` for retrieving entire
+directories. We could use `wget` to first retrieve an entire directory and
 then run `html2text` and `grep` to find a particular string.
 `cURL` is limited to retrieving one or more specified URLs that cannot be
 obtained by recursively crawling a directory. The situation may be improved by
-combining with other unix tools, but is not thought as being as good as `Wget`.
+combining with other unix tools, but is not thought as being as good as `wget`.
 
 Please refer to the man pages by typing `man wget`, `man curl`, and
 `man html2text` in the shell for more information.
@@ -181,17 +181,17 @@ Please refer to the man pages by typing `man wget`, `man curl`, and
 > Start a download of a large file (e.g.
 > https://www.zenodo.org/record/5307070/files/S-only-10000x.tar.gz, a file from
 > a [dataset of simulated wastewater sequencing data for SARS-CoV-2](sars-cov2-wastewater)
-> using wget and stop the download before it has finished by pressing the
+> using Wget and stop the download before it has finished by pressing the
 > 'ctrl' and 'c' keys together. This will leave a partially downloaded file on
 > your computer.
 >
-> Open the wget man page by running `man wget` and find the option to continue
+> Open the Wget man page by running `man wget` and find the option to continue
 > a partial download.
 >
 > Resume your download with this option.
 >
 > > ## Solution
-> >The -c or --continue option will tell wget to resume a partial download.
+> >The -c or --continue option will tell Wget to resume a partial download.
 > > ~~~
 > > wget -c https://www.zenodo.org/record/5307070/files/S-only-10000x.tar.gz
 > > ~~~
