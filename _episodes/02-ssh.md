@@ -105,12 +105,12 @@ $ pwd
 {: .bash}
 
 ~~~
-/users/vlad
+/users/nelle
 ~~~
 {: .output}
 
 ~~~
-$ ssh vlad@moon.euphoric.edu
+$ ssh nelle@moon.euphoric.edu
 Password: ********
 ~~~
 {: .bash}
@@ -131,7 +131,7 @@ Password: ********
 {: .bash}
 
 ~~~
-    /home/vlad
+    /home/nelle
 ~~~
 {: .output}
 
@@ -156,7 +156,7 @@ $ pwd
 {: .bash}
 
 ~~~
-/users/vlad
+/users/nelle
 ~~~
 {: .output}
 
@@ -207,7 +207,7 @@ this command copies our latest results to the backup server in the basement,
 printing out its progress as it does so:
 
 ~~~
-$ scp results.dat vlad@backupserver:backups/results-2011-11-11.dat
+$ scp results.dat nelle@backupserver:backups/results-2011-11-11.dat
 Password: ********
 ~~~
 {: .bash}
@@ -229,7 +229,7 @@ target, for a remote copy, is also the  home directory.
 This means that
 
 ~~~
-$ scp results.dat vlad@backupserver:
+$ scp results.dat nelle@backupserver:
 ~~~
 {: .bash}
 
@@ -238,15 +238,15 @@ if we did not have the colon to inform `scp` of the remote machine, we would
 still have a valid commmad.
 
 ~~~
-$ scp results.dat vlad@backupserver
+$ scp results.dat nelle@backupserver
 ~~~
 {: .bash}
 
-but now we have merely created a file called `vlad@backupserver` on our local
+but now we have merely created a file called `nelle@backupserver` on our local
 machine, as we would have done with `cp`.
 
 ~~~
-$ cp results.dat vlad@backupserver
+$ cp results.dat nelle@backupserver
 ~~~
 {: .bash}
 
@@ -256,7 +256,7 @@ be recursively. For example, this command copies all of our results from the
 backup server to our laptop:
 
 ~~~
-$ scp -r vlad@backupserver:backups ./backups
+$ scp -r nelle@backupserver:backups ./backups
 Password: ********
 ~~~
 {: .bash}
@@ -274,17 +274,17 @@ results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 > all the files and subdirectories contained within it to the `/data` directory
 > on a remote computer called `datastore.euphoric.edu`:
 >
-> 1. scp data vlad@datastore.euphoric.edu
-> 2. cp -r data vlad@datastore.euphoric.edu:
-> 3. scp -r data vlad@datastore.euphoric.edu:/data
-> 4. scp data vlad@datastore.euphoric.edu:
+> 1. scp data nelle@datastore.euphoric.edu
+> 2. cp -r data nelle@datastore.euphoric.edu:
+> 3. scp -r data nelle@datastore.euphoric.edu:/data
+> 4. scp data nelle@datastore.euphoric.edu:
 >
 > > ## Solution
 > > 3 is the correct answer.
 > >
 > > 1 does not have `-r` option to copy all subdirectories and is missing the
 > > `:` to specify the path on the remote computer. It will create a file
-> > called `vlad@datastore.euphoric.edu` on the local computer.
+> > called `nelle@datastore.euphoric.edu` on the local computer.
 > >
 > > 2 uses the `cp` command instead of `scp`, it will only copy files on the
 > > local computer.
@@ -303,7 +303,7 @@ Instead of logging in and then typing `ls`,
 we could do this:
 
 ~~~
-$ ssh vlad@backupserver "ls results*"
+$ ssh nelle@backupserver "ls results*"
 Password: ********
 ~~~
 {: .bash}
@@ -422,7 +422,7 @@ Copy the contents of the output.
 Login to the remote server with your username and password.
 
 ~~~
-$ ssh vlad@moon.euphoric.edu
+$ ssh nelle@moon.euphoric.edu
 Password: ********
 ~~~
 {: .bash}
@@ -443,7 +443,7 @@ you setup your SSH key correctly you won't need to type your password.
 {: .bash}
 
 ~~~
-$ ssh vlad@moon.euphoric.edu
+$ ssh nelle@moon.euphoric.edu
 ~~~
 {: .bash}
 
@@ -476,13 +476,13 @@ Firstly, we check that we have a `.ssh/` directory on another remote
 machine, `comet`
 
 ~~~
-$ ssh vlad@comet "ls -ld ~/.ssh"
+$ ssh nelle@comet "ls -ld ~/.ssh"
 Password: ********
 ~~~
 {: .bash}
 
 ~~~
-    ls: cannot access /home/vlad/.ssh: No such file or directory
+    ls: cannot access /home/nelle/.ssh: No such file or directory
 ~~~
 {: .output}
 
@@ -490,13 +490,13 @@ Oh dear! We should create the directory; and check that it's there
 (Note: two commands, seperated by a semicolon)
 
 ~~~
-$ ssh vlad@comet "mkdir ~/.ssh; ls -ld ~/.ssh"
+$ ssh nelle@comet "mkdir ~/.ssh; ls -ld ~/.ssh"
 Password: ********
 ~~~
 {: .bash}
 
 ~~~
-    drwxr-xr-x 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
+    drwxr-xr-x 2 nelle nelle 512 Jan 01 09:09 /home/nelle/.ssh
 ~~~
 {: .output}
 
@@ -511,13 +511,13 @@ for the user, and not accessible by others.
 Let's alter the permissions on the directory
 
 ~~~
-$ ssh vlad@comet "chmod 700 ~/.ssh; ls -ld ~/.ssh"
+$ ssh nelle@comet "chmod 700 ~/.ssh; ls -ld ~/.ssh"
 Password: ********
 ~~~
 {: .bash}
 
 ~~~
-    drwx------ 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
+    drwx------ 2 nelle nelle 512 Jan 01 09:09 /home/nelle/.ssh
 ~~~
 {: .output}
 
@@ -531,14 +531,14 @@ and of course, we will use `scp` to do this, even though we don't
 yet have passwordless SSH access set up.
 
 ~~~
-$ scp ~/.ssh/id_rsa.pub vlad@comet:.ssh/authorized_keys
+$ scp ~/.ssh/id_rsa.pub nelle@comet:.ssh/authorized_keys
 Password: ********
 ~~~
 {: .bash}
 
 Note that the default target for the `scp` command on a remote
 machine is the home directory, so we have not needed to use the
-shorthand `~/.ssh/` or even the full path `/home/vlad/.ssh/` to
+shorthand `~/.ssh/` or even the full path `/home/nelle/.ssh/` to
 our home directory there.
 
 Checking the permissions of the file we have just created on
@@ -547,12 +547,12 @@ need to use our password, because we now have what's needed
 to use SSH without it.
 
 ~~~
-$ ssh vlad@comet "ls -l ~/.ssh"
+$ ssh nelle@comet "ls -l ~/.ssh"
 ~~~
 {: .bash}
 
 ~~~
-    -rw-r--r-- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
+    -rw-r--r-- 2 nelle nelle 512 Jan 01 09:11 /home/nelle/.ssh/authorized_keys
 ~~~
 {: .output}
 
@@ -561,12 +561,12 @@ Whilst the authorized keys file is not considered to be highly sensitive,
 the man page's recommendations
 
 ~~~
-$ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys; ls -l ~/.ssh"
+$ ssh nelle@comet "chmod go-r ~/.ssh/authorized_keys; ls -l ~/.ssh"
 ~~~
 {: .bash}
 
 ~~~
-    -rw------- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
+    -rw------- 2 nelle nelle 512 Jan 01 09:11 /home/nelle/.ssh/authorized_keys
 ~~~
 {: .output}
 
