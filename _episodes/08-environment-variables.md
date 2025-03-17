@@ -170,7 +170,7 @@ Camilla
 
 If we want to set some variables automatically every time we run a shell,
 we can put commands to do this in a file called `.bashrc` in our home
-directory. (The '.' character at the front prevents `ls` from listing this file
+directory. (The `.` character at the front prevents `ls` from listing this file
 unless we specifically ask it to using `-a`:
 we normally don't want to worry about it.
 The "rc" at the end is an abbreviation for "run control",
