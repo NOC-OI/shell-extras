@@ -45,7 +45,7 @@ USERNAME=vlad
 ~~~
 {: .output}
 
-As you can see, there are quite a few&mdash;in fact, four or five times more
+As you can see, there are quite a few --- in fact, four or five times more
 than what's shown here. And yes, using `set` to *show* things might seem a
 little strange, even for Unix, but if you don't give it any arguments,
 it might as well show you things you *could* set.
