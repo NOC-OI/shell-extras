@@ -26,8 +26,8 @@ the HTTP, HTTPS and FTP protocols. It is widely used by Unix-like users and
 is available with most Linux distributions.
 
 To download this lesson (located at
-https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
-) from the web via HTTP we can simply type:
+<https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html>)
+from the web via HTTP we can simply type:
 
 ~~~
 $ wget https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
