@@ -15,13 +15,13 @@ objectives:
 keypoints:
 - "Archive files are files which contain one or more other files. They are a convienient way to store or transfer multiple files and directory structures inside a single file."
 - "Zip archives are (usually) compressed by default."
+- "Zip files can be extracted with the `unzip` command."
+- "Zip files can be created with the `zip` command."
 - "Tar archives are not compressed."
 - "Tar archives can be compressed using the `gzip` or `bzip2` utilities."
-- "Zip files can be extracted with the `unzip` command."
 - "Tar files can be extracted with the `tar -xf` option."
 - "Modern versions of tar will automatically uncompress gzipped or bzipped archives."
 - "Tar files can be created with the `tar -cf` option."
-- "Zip files can be created with the `zip` command."
 ---
 
 # Archive Files
@@ -412,14 +412,13 @@ tar -xvf goodfiles.tar.bz2
 > > zip -9 -r north-pacific-gyre.zip north-pacific-gyre
 > > ls -lh north-pacific-gyre*.*
 > > ~~~
-> > 31K Mar 18 12:39 north-pacific-gyre.tar.bz2
-> > 36K Mar 18 12:39 north-pacific-gyre.tar.gz
-> > 41K Mar 17 18:33 north-pacific-gyre.zip
-
 > > {: .language-bash}
+> >
+> > - north-pacific-gyre.tar - 90K
+> > - north-pacific-gyre.tar.bz2 - 31K
+> > - north-pacific-gyre.tar.gz - 36K
+> > - north-pacific-gyre.zip - 41K
+> >
 > {: .solution}
 {: .challenge}
-
-
-
 
