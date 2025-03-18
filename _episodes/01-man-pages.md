@@ -23,7 +23,7 @@ here is the command to look up information on `cp`:
 ~~~
 $ man cp
 ~~~
-{: .bash}
+{: .language-bash}
 
 The output displayed is referred to as the "man page".
 

@@ -29,7 +29,7 @@ If we need to count the number of lines in a file, we can use the previously sho
 ~~~ {.bash}
 wc -l example.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 As you probably remember, -l is an option that asks for the number of lines only.
 
@@ -48,7 +48,7 @@ Example:
 ~~~ {.bash}
 awk '{print $0}' example.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 
 This command has the same output as `cat`: it prints each line from the example.txt
@@ -73,14 +73,14 @@ So, if we like to print only the second column from the table, we execute
 ~~~ {.bash}
 awk '{print $2}' example.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 We can also print more than one value, or add text (e.g. "chr") to the printed line:
 
 ~~~
 awk '{print "chr",$2,$4}' example.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 The comma puts a space between the printed values. Strings of text should be enclosed in
 double quotes. In this case we are printing the text "chr", the second and the fourth
@@ -96,7 +96,7 @@ row. Let's see for our table:
 ~~~
 awk '{print NF}' example.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 We can see that some lines contain 6 fields while others contain 7 of them.
 Since NF is the number of the last field, $NF contains its value.
@@ -104,7 +104,7 @@ Since NF is the number of the last field, $NF contains its value.
 ~~~
 awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 > ## Field separator
 >
@@ -117,7 +117,7 @@ To specify the field separator, we should provide it at the command line like:
 ~~~
 awk -F "," '{print $2}' example2.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 In this case, we are printing the second field in each line, using comma as
 separator. Please notice that the character space is now part of the field
@@ -134,7 +134,7 @@ Let's look at the file content
 ~~~
 awk '{print $0}' methane.pdb
 ~~~
-{: .bash}
+{: .language-bash}
 
 It seems an abriged PDB file. If we would like to print only lines starting
 with the word "ATOM", we type:
@@ -142,7 +142,7 @@ with the word "ATOM", we type:
 ~~~
 awk '/^ATOM/ {print $0}' example.pdb
 ~~~
-{: .bash}
+{: .language-bash}
 
 In this case, we specify the pattern before the instructions: only lines
 starting with the text "ATOM". As you remember, ^ means "at the beginning of
@@ -153,6 +153,6 @@ We can specify more than one pattern:
 ~~~
 awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' example.pdb
 ~~~
-{: .bash}
+{: .language-bash}
 
 In this case, we are printing the spatial coordinates of each atom.

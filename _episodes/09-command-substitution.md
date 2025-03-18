@@ -29,7 +29,7 @@ $ for file in *cyclo*.pdb; do
 >     sort $file > sorted/sorted-$file
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 In this example, the shell generates for us the list of things to loop
 over, using the wildcard mechanism we saw in the *Pipes and Filters* topic.
@@ -47,7 +47,7 @@ $ for cutoff in 0.001 0.01 0.05; do
 >   run_classifier.sh --input ALL-data.txt --pvalue $cutoff --output results-$cutoff.txt
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 In the second example, the things to loop over: `"0.001 0.01 0.05"`
 are spelled out by you.
@@ -62,7 +62,7 @@ are spelled out by you.
 >   run_classifier.sh --input ALL-data.txt --pvalue $cutoff --output results-$cutoff.txt
 > done
 > ~~~
-> {: .bash}
+> {: .language-bash}
 > This works because, just as with the filename wildcards, `$cutoffs` is
 > replaced with `0.001 0.01 0.05` before the loop starts.
 {: .callout}
@@ -83,7 +83,7 @@ $ for file in [INSERT THE CONTENTS OF cohort2010.txt HERE]
 >    run_classifier.sh --input $file --pvalue -0.05 --output $file.results
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 ## Command substitution
 
@@ -102,7 +102,7 @@ $ for file in $(cat cohort2010.txt)
 >    run_classifier.sh --input $file --pvalue -0.05 --output $file.results
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 It works simply as follows: everything between the `$(` and the `)` is
 executed as a Unix command, and the command's standard output replaces
@@ -141,7 +141,7 @@ $ for file in $(cat cohort2010.txt)
 >     ...
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 will be expanded to
 
@@ -151,7 +151,7 @@ $ for file in patient1033130.txt patient1048338.txt patient7448262.txt ... patie
 >     ...
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 (notice the convenience of newlines having been replaced with simple spaces).
 
@@ -168,7 +168,7 @@ $ for file in $(cat cohort2010.txt | head -n 2)
 >     ...
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 which will expand to
 
@@ -178,7 +178,7 @@ $ for file in patient1033130.txt patient1048338.txt
 >     ...
 > done
 ~~~
-{: .bash}
+{: .language-bash}
 
 simply because `cat cohort2010.txt | head -n 2` produces
 `patient1033130.txt patient1048338.txt` after the command substitution.
@@ -231,7 +231,7 @@ loops.
 > > ~~~
 > > cp file file.$(date +"%Y-%m-%d_%T")
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > {: .solution}
 {: .challenge}
 
@@ -251,7 +251,7 @@ loops.
 > ~~~
 > $ basename patient1048338.txt    .txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 > gives
 > ~~~
 > patient1048338
@@ -272,7 +272,7 @@ loops.
 > > ~~~
 > > for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > {: .solution}
 {: .challenge}
 

@@ -276,7 +276,7 @@ Archive:  goodfiles.zip
 > ~~~
 > time zip goodfiles.zip NENE*[AB].txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 > 
 > > ## Solution
 > > The `-0` to `-9` options vary the compression level/speed.

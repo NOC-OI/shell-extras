@@ -102,7 +102,7 @@ cd labs
 ls -F
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 safety.txt    setup*     waiver.txt
@@ -130,7 +130,7 @@ Now let's run the command `ls -l`:
 ls -l
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
@@ -182,7 +182,7 @@ in the course Vlad is teaching:
 ls -l final.grd
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 -rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
@@ -201,7 +201,7 @@ The command to change the owner's permissions to `rw-` is:
 chmod u=rw final.grd
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 The 'u' signals that we're changing the privileges
 of the user (i.e., the file's owner),
@@ -213,7 +213,7 @@ because the owner's permissions are now set to read and write:
 ls -l final.grd
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 -rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
@@ -228,7 +228,7 @@ chmod g=r final.grd
 ls -l final.grd
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 -rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
@@ -244,7 +244,7 @@ chmod o= final.grd
 ls -l final.grd
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 -rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
@@ -265,7 +265,7 @@ that the user can execute:
 find . -type f -perm -u=x
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 ./tools/format
@@ -282,7 +282,7 @@ to get a long-form listing that includes directory entries that are normally hid
 ls -a -l
 ~~~
 
-{: .bash}
+{: .language-bash}
 
 ~~~
 drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .

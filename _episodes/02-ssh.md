@@ -102,7 +102,7 @@ and their output.
 ~~~
 $ pwd
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 /users/nelle
@@ -113,12 +113,12 @@ $ pwd
 $ ssh nelle@neptune.aquatic.edu
 Password: ********
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
     neptune> hostname
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
     neptune
@@ -128,7 +128,7 @@ Password: ********
 ~~~
     neptune> pwd
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
     /home/nelle
@@ -138,7 +138,7 @@ Password: ********
 ~~~
     neptune> ls -F
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
     bin/     fish.txt   deep_sea/   rocks.cfg
@@ -148,12 +148,12 @@ Password: ********
 ~~~
     neptune> exit
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 $ pwd
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 /users/nelle
@@ -213,7 +213,7 @@ Then we can copy it to a remote server with `scp`:
 scp ~/Downloads/north-pacific-gyre.zip nelle@backupserver:backups/north-pacific-gyre-2012-07-03.zip
 Password: ********
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 north-pacific-gyre.zip    100%   40KB 554.5KB/s   00:00
@@ -234,7 +234,7 @@ This means that
 ~~~
 scp ~/Downloads/north-pacific-gyre.zip nelle@backupserver:
 ~~~
-{: .bash}
+{: .language-bash}
 
 would copy `north-pacific-gyre.zip` into our home directory on `backupserver`, however,
 if we did not have the colon to inform `scp` of the remote machine, we would
@@ -243,7 +243,7 @@ still have a valid commmad.
 ~~~
 scp ~/Downloads/north-pacific-gyre.zip nelle@backupserver:
 ~~~
-{: .bash}
+{: .language-bash}
 
 but now we have merely created a file called `nelle@backupserver` on our local
 machine, as we would have done with `cp`.
@@ -251,7 +251,7 @@ machine, as we would have done with `cp`.
 ~~~
 cp ~/Downloads/north-pacific-gyre.zip nelle@backupserver
 ~~~
-{: .bash}
+{: .language-bash}
 
 Copying a whole directory betwen remote machines uses the same syntax as the
 `cp` command: we just use the `-r` option to signal that we want copying to
@@ -262,7 +262,7 @@ backup server to our laptop:
 scp -r nelle@backupserver:backups ./backups
 Password: ********
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 results-2011-09-18.dat              100%  7  1.0 MB/s 00:00
@@ -323,7 +323,7 @@ we could do this to list all the zip files:
 ssh nelle@backupserver "ls *.zip"
 Password: ********
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 north-pacific-gyre.zip
@@ -363,7 +363,7 @@ one exists by moving to your `.ssh` directory and listing the contents.
 $ cd ~/.ssh
 $ ls
 ~~~
-{: .bash}
+{: .language-bash}
 
 If you see `id_rsa.pub`, you already have a key pair and don't need to create a
 new one.
@@ -374,7 +374,7 @@ pair. Make sure to replace `your@email.com` with your own email address.
 ~~~
 $ ssh-keygen -t rsa -C "your@email.com"
 ~~~
-{: .bash}
+{: .language-bash}
 
 When asked where to save the new key, hit enter to accept the default location.
 
@@ -427,7 +427,7 @@ Display the contents of your new public key file with `cat`:
 ~~~
 $ cat ~/.ssh/id_rsa.pub
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA879BJGYlPTLIuc9/R5MYiN4yc/YiCLcdBpSdzgK9Dt0Bkfe3rSz5cPm4wmehdE7GkVFXrBJ2YHqPLuM1yx1AUxIebpwlIl9f/aUHOts9eVnVh4NztPy0iSU/Sv0b2ODQQvcy2vYcujlorscl8JjAgfWsO3W4iGEe6QwBpVomcME8IU35v5VbylM9ORQa6wvZMVrPECBvwItTY8cPWH3MGZiK/74eHbSLKA4PY3gM4GHI450Nie16yggEg2aTQfWA1rry9JYWEoHS9pJ1dnLqZU3k/8OWgqJrilwSoC5rGjgp93iu0H8T6+mEHGRQe84Nk1y5lESSWIbn6P636Bl3uQ== nelle@aquatic.edu
@@ -442,14 +442,14 @@ Login to the remote server with your username and password.
 $ ssh nelle@neptune.aquatic.edu
 Password: ********
 ~~~
-{: .bash}
+{: .language-bash}
 
 Paste the content that you copy at the end of `~/.ssh/authorized_keys`.
 
 ~~~
     neptune> nano ~/.ssh/authorized_keys
 ~~~
-{: .bash}
+{: .language-bash}
 
 After append the content, logout of the remote machine and try login again. If
 you setup your SSH key correctly you won't need to type your password.
@@ -457,12 +457,12 @@ you setup your SSH key correctly you won't need to type your password.
 ~~~
     neptune> exit
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 $ ssh nelle@neptune.aquatic.edu
 ~~~
-{: .bash}
+{: .language-bash}
 
 
 
@@ -510,7 +510,7 @@ machine, `beagle`
 
 Password: ********
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
     ls: cannot access /home/nelle/.ssh: No such file or directory
@@ -531,7 +531,7 @@ Now try logging into the machine, with:   "ssh 'nelle@beagle'"
 and check to make sure that only the key(s) you wanted were added.
 
 ~~~
-{: .bash}
+{: .language-bash}
 
 Let's try loging in again, this time there should be no password prompt
 and there should be a `.ssh` directory.

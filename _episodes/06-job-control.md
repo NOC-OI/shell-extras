@@ -55,7 +55,7 @@ to list files and directories.
 ~~~
 $ ps
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
   PID TTY          TIME CMD
 12767 pts/0    00:00:00 bash
@@ -74,7 +74,7 @@ that bare bones information.
 ~~~
 $ ps -f
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
 UID        PID  PPID  C STIME TTY          TIME CMD
 vlad     12396 25397  0 14:28 pts/0    00:00:00 ps -f
@@ -138,7 +138,7 @@ Any results it had calculated, but not written to disk, are lost.
 ~~~
 $ ./analyze results*.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 ...a few minutes pass...
@@ -153,7 +153,7 @@ the line to tell the shell we want it to run in the
 ~~~
 $ ./analyze results*.dat &
 ~~~
-{: .bash}
+{: .language-bash}
 
 When we do this, the shell launches the program as before. Instead of
 leaving our keyboard and screen connected to the program's standard
@@ -168,7 +168,7 @@ density: 22.0
 viscosity: 0.75
 ^D
 ~~~
-{: .bash}
+{: .language-bash}
 
 (Remember, \^D is the shell's way of showing Control-D, which means "end
 of input".) Now let's run the `jobs` command, which tells us what
@@ -177,7 +177,7 @@ processes are currently running in the background:
 ~~~
 $ jobs
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 [1] ./analyze results01.dat results02.dat results03.dat
@@ -191,7 +191,7 @@ foreground:
 ~~~
 $ fg
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 ...a few minutes pass...
@@ -215,7 +215,7 @@ tells us that our program has been stopped, and gives us its job number:
 $ ./analyze results01.dat
 ^Z
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 [1]  Stopped   ./analyze results01.dat
@@ -233,7 +233,7 @@ $ bg %1
 
 $ jobs
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
 [1] ./analyze results01.dat
 ~~~
@@ -241,7 +241,7 @@ $ jobs
 ~~~
 $ kill %1
 ~~~
-{: .bash}
+{: .language-bash}
 
 Job control was important when users only had one terminal window at a
 time. It's less important now: if we want to run another program, it's
