@@ -2,9 +2,9 @@
 title: AWK
 teaching: 20
 exercises: 5
-questions:  
-- "How to use AWK for text processing?"  
-objectives:  
+questions:
+- "How to use AWK for text processing?"
+objectives:
 - "Explain why AWK is useful and when it is better than pipes"
 - "Show a basic usage similar to the command `cat` command"
 - "Introduce the filed separator parameter"
@@ -13,7 +13,7 @@ objectives:
 - "Use the `if-then` structure to change behaviour for the same matching regex"
 - "Introduce the array data structure"
 - "Use the for loop to cycle through an array"
-keypoints:  
+keypoints:
 - awk can be used to manipulate and filter data, e.g. adding text or printing specific columns
 - NF is a variable that stores the number of fields in the current line
 - Field separator can be specified with the `-F` option, default is space
@@ -83,7 +83,7 @@ awk '{print "chr",$2,$4}' example.txt
 {: .bash}
 
 The comma puts a space between the printed values. Strings of text should be enclosed in
-double quotes. In this case we are printing the text "chr", the second and the fourth 
+double quotes. In this case we are printing the text "chr", the second and the fourth
 column for each row in the table.
 
 So, $0 is the whole line, $1 the first field, $2 the second and so on. What if we want
@@ -103,7 +103,6 @@ Since NF is the number of the last field, $NF contains its value.
 
 ~~~
 awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
->>>>>>> e24112585e429efa738cf9ebb5a9826e4916f269:_episodes/09-awk.md
 ~~~
 {: .bash}
 
@@ -120,8 +119,8 @@ awk -F "," '{print $2}' example2.txt
 ~~~
 {: .bash}
 
-In this case, we are printing the second field in each line, using comma as 
-separator. Please notice that the character space is now part of the field 
+In this case, we are printing the second field in each line, using comma as
+separator. Please notice that the character space is now part of the field
 value, since it is no longer the separator.
 
 > ## Matching lines
@@ -137,7 +136,7 @@ awk '{print $0}' methane.pdb
 ~~~
 {: .bash}
 
-It seems an abriged PDB file. If we would like to print only lines starting 
+It seems an abriged PDB file. If we would like to print only lines starting
 with the word "ATOM", we type:
 
 ~~~
@@ -145,14 +144,14 @@ awk '/^ATOM/ {print $0}' example.pdb
 ~~~
 {: .bash}
 
-In this case, we specify the pattern before the instructions: only lines 
-starting with the text "ATOM". As you remember, ^ means "at the beginning of 
+In this case, we specify the pattern before the instructions: only lines
+starting with the text "ATOM". As you remember, ^ means "at the beginning of
 the line".
 
 We can specify more than one pattern:
 
 ~~~
-awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' methane.pdb
+awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' example.pdb
 ~~~
 {: .bash}
 

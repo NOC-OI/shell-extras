@@ -2,25 +2,24 @@
 title: "Command Substitution"
 teaching: 10
 exercises: 5
-questions: 
-- "How to use command substitutions for arguments flexibility?"
-objectives: 
-- Understand the need for flexibility regarding arguments
-- Generate the values of the arguments on the fly using command substitution
-- Understand the difference between pipes/redirection and the command 
-substitution operator
-keypoints: 
-- Command substitution can achieved by using dollar mark, 
-`$(things to be replaced)`.
-- Things to be replaced can be words and outputs of another command
-- Command substitution can be used for inputs and output of another command, 
-but the output side must be modified to avoid file replacements.
+questions:
+- "How to substitute variables with command outputs."
+objectives:
+- "Understand the need for flexibility regarding arguments"
+- "Generate the values of the arguments on the fly using command substitution"
+- "Understand the difference between pipes/redirection and the command
+substitution operator"
+keypoints:
+- We can substitue variables for the output of commands using the $(command) syntax.
+- We can loop through sets of values in a "parameter sweep".
+- For loops can take a single variable with space separated arguments and treat
+ each as a separate item to iterate over.
 ---
 
 ## Introduction
 
 In the *Loops* topic we saw how to improve productivity by letting the computer
- do the repetitive work. Often, this involves doing the same thing to a whole 
+do the repetitive work. Often, this involves doing the same thing to a whole
 set of files, e.g.:
 
 ~~~
@@ -33,13 +32,13 @@ $ for file in *cyclo*.pdb; do
 {: .bash}
 
 In this example, the shell generates for us the list of things to loop
-over, using the wildcard mechanism we saw in the *Pipes and Filters* topic. 
-This results in the `cyclo*.pdf` being replaced with 
-`cyclobutane.pdb cyclohexanol.pdb cyclopropane.pdb ethylcyclohexane.pdb` 
+over, using the wildcard mechanism we saw in the *Pipes and Filters* topic.
+This results in the `cyclo*.pdf` being replaced with
+`cyclobutane.pdb cyclohexanol.pdb cyclopropane.pdb ethylcyclohexane.pdb`
 before the loop starts.
 
-Another example is a so-called *parameter sweep*, where you run the same 
-program a number of times with different arguments. Here is a fictitious 
+Another example is a so-called *parameter sweep*, where you run the same
+program a number of times with different arguments. Here is a fictitious
 example:
 
 
@@ -50,7 +49,7 @@ $ for cutoff in 0.001 0.01 0.05; do
 ~~~
 {: .bash}
 
-In the second example, the things to loop over: `"0.001 0.01 0.05"` 
+In the second example, the things to loop over: `"0.001 0.01 0.05"`
 are spelled out by you.
 
 ## Looping over the words in a string 
@@ -64,8 +63,8 @@ are spelled out by you.
 > done
 > ~~~
 > {: .bash}
-> This works because, just as with the filename wildcards, `$cutoffs` is 
-> replaced with `0.001 0.01 0.05` before the loop starts. 
+> This works because, just as with the filename wildcards, `$cutoffs` is
+> replaced with `0.001 0.01 0.05` before the loop starts.
 {: .callout}
 
 However, you don't always know in advance *what* you have to loop
@@ -93,10 +92,10 @@ relying on the wildcard mechanism. What we need, therefore, is a
 mechanism that actually replaces everything between `[` and `]` with the
 desired names of input files, just before the loop starts.  Thankfully,
 this mechanism exists, and it is called the **command substitution operator**
-(previously written using the **backtick operator**). It looks much like the 
+(previously written using the **backtick operator**). It looks much like the
 previous snippet:
 
-~~~ 
+~~~
 # (actual syntax)
 $ for file in $(cat cohort2010.txt)
 > do
@@ -108,7 +107,7 @@ $ for file in $(cat cohort2010.txt)
 It works simply as follows: everything between the `$(` and the `)` is
 executed as a Unix command, and the command's standard output replaces
 everything from `$(` up to and including `)`, just before the loop
-starts.  For convenience, newlines in the command's output are 
+starts.  For convenience, newlines in the command's output are
 replaced with simple spaces.
 
 ### Backtick operator
@@ -124,9 +123,9 @@ of its argument (a filename) to standard output. So, if the contents of
 file `cohort2010.txt` look like
 
 ~~~
-patient1033130.txt 
-patient1048338.txt 
-patient7448262.txt 
+patient1033130.txt
+patient1048338.txt
+patient7448262.txt
 .
 .
 .
@@ -144,7 +143,7 @@ $ for file in $(cat cohort2010.txt)
 ~~~
 {: .bash}
 
-will be expanded to 
+will be expanded to
 
 ~~~
 $ for file in patient1033130.txt patient1048338.txt patient7448262.txt ... patient1820757.txt
@@ -163,7 +162,7 @@ command, or even pipeline, can also be used. For example, if
 try the first two for a test run, you can use the `head` command to just
 get the first few lines of its argument, like so:
 
-~~~ 
+~~~
 $ for file in $(cat cohort2010.txt | head -n 2)
 > do
 >     ...
@@ -208,8 +207,8 @@ loops.
 > qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
 > ~~~
 >
-> Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command 
-> subsitution operator. The Unix command you need here is the `date` 
+> Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command
+> subsitution operator. The Unix command you need here is the `date`
 > command, which provides you with the current date and time (try it).
 >
 > In the current form, its output is less useful for generating filenames
@@ -238,6 +237,36 @@ loops.
 
 
 > ## Juggling filename extensions
+> When running an analysis program with a certain input file, it
+> is often required that the output has the same name as the input, but with
+> a different filename extension, e.g.
+>
+> ~~~
+> $ run_classifier.sh --input patient1048338.txt --pvalue -0.05 --output patient1048338.results
+> ~~~
+>
+> A good trick here is to use the Unix `basename` command. It takes a string
+> (typically a filename), and strips off the given extension (if it is part
+> of the input string). Example:
+> ~~~
+> $ basename patient1048338.txt    .txt
+> ~~~
+> {: .bash}
+> gives
+> ~~~
+> patient1048338
+> ~~~
+> {: .output}
+>
+>
+> Write a loop that uses the command substitution operator and the
+> `basename` command to sort each of the `*.pdb` files into a
+> corresponding `*.sorted` file. That is, make the loop do the
+> following:
+> ~~~
+> $ sort ammonia.pdb > ammonia.sorted
+> ~~~
+> but for *each* of the `.pdb`-files.
 >
 > > ## Solution
 > > ~~~

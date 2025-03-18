@@ -5,9 +5,9 @@ exercises: 5
 questions:
 - "How to use man pages?"
 objectives:
-- "Use `man` to display the manual page for a given command." 
+- "Use `man` to display the manual page for a given command."
 - "Explain how to read the synopsis of a given command while using `man`."
-- "Search for specific options or flags in the manual page for a given command. " 
+- "Search for specific options or flags in the manual page for a given command. "
 keypoints:
 - "`man command` displays the manual page for a given command."
 - "`[OPTION]...` means the given command can be followed by one or more optional flags."
@@ -27,10 +27,10 @@ $ man cp
 
 The output displayed is referred to as the "man page".
 
-Most man pages contain much more information than can fit in one terminal screen.  
+Most man pages contain much more information than can fit in one terminal screen.
 To help facilitate reading, the `man` command tries to use a "pager" to move and search
 through the information screenfull by screenfull.  The most common pager is called `less`.
-Detailed information is available using `man less`.  `less` is typically the default 
+Detailed information is available using `man less`.  `less` is typically the default
 pager for Unix systems and other tools may use it for output paging as well.
 
 When `less` displays a colon ':',
@@ -143,8 +143,7 @@ until we find the detailed information we need:
 This means that this option has the short form `-t` and the long form `--target-directory`
 and that it takes an argument.
 Its meaning is to copy all the SOURCE arguments into DIRECTORY.
-Thus,
-we can give the destination explicitly
+Thus, we can give the destination explicitly
 instead of relying on having to place the directory at the end.
 
 ## Limitations of Man Pages
@@ -176,5 +175,19 @@ it will often produce more helpful results.
 > {: .solution}
 {: .challenge}
 
+> ## Looking up extra options to ls
+> One of Nelle's colleagues always uses the the `-lhtr` option when they run ls.
+> Nelle asks them what this does and they can't quite remember but it always 
+> gives the format they prefer. Lookup in the man page for `ls` what these
+> options do.
+>
+> > ## Solution
+> > - `-l` lists in long format which includes file creation time, ownership,
+> > permissions and size.
+> > - `-h` enables "human readable" file size suffixes such as K, M and G.
+> > - `-t` sorts by time.
+> > - `-r` reverse the order, so the newest files come last.
+> {: .solution}
+{: .challenge}
 
 {% include links.md %}

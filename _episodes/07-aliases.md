@@ -10,7 +10,7 @@ objectives:
 - Change the prompt in a bash environment.
 keypoints:
 - Aliases are used to create shortcuts or abbreviations
-- The `.bashrc` and `.bash_profile` files allow us to customize our 
+- The `.bashrc` and `.bash_profile` files allow us to customize our
   bash environment.
 - The `PS1` system variable can be changed to customize your bash
   prompt.
@@ -72,7 +72,7 @@ login shells.  If the `.bash_logout` file exists, then it will be run
 after exiting a shell session.
 
 Let's add the above commands to our `.bashrc` file.
-Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one 
+Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one
 `>` which would overwrite.
 ~~~
 echo "alias up='cd ..'" >> ~/.bashrc
@@ -85,7 +85,7 @@ alias up='cd ..'
 ~~~
 {: .output}
 
-We can execute the commands in `.bashrc` using `source`, so this creates the 
+We can execute the commands in `.bashrc` using `source`, so this creates the
 alias `up` which we can then use in directory `/usr/local/bin`:
 
 ~~~
@@ -136,4 +136,4 @@ export PS1="\u@\h[\W]: "
 {: .bash}
 
 where `\u` represents username, `\h` represents hostname, and `\W`
-represents the current directory.  
+represents the current directory. 
