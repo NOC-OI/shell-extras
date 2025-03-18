@@ -205,7 +205,7 @@ If we leave out a computer name,
 
 Using our web browser let's download some of Nelle's data which is stored in 
 a zip file with this lesson from:
-[{{page.root}}/data/north-pacific-gyre.zip]({{page.root}}/data/north-pacific-gyre.zip).
+[{{ site.url }}/data/north-pacific-gyre.zip]({{page.root}}/data/north-pacific-gyre.zip).
 
 Then we can copy it to a remote server with `scp`:
 
@@ -470,7 +470,7 @@ $ ssh nelle@neptune.aquatic.edu
 
 > ## Create an SSH key 
 > Create an SSH key with the `ssh-keygen` command. 
-> Don't add a pass-phrase to it at this stage.
+> Don't add a pass-phrase to it at this stage, we'll do that next.
 {: .challenge}
 
 

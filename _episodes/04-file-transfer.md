@@ -26,17 +26,17 @@ the HTTP, HTTPS and FTP protocols. It is widely used by Unix-like users and
 is available with most Linux distributions.
 
 To download this lesson (located at
-<https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html>)
+<{{ site.url }}/04-file-transfer/index.html>)
 from the web via HTTP we can simply type:
 
 ~~~
-$ wget https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+$ wget {{ site.url }}/04-file-transfer/index.html
 ~~~
 {: .bash}
 
 ~~~
 --2021-05-29 02:12:18—
-https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+{{ site.url }}/04-file-transfer/index.html
 Resolving carpentries-incubator.github.io (carpentries-incubator.github.io)... 185.199.111.153, 185.199.110.153, 185.199.109.153, ...
 Connecting to carpentries-incubator.github.io (carpentries-incubator.github.io)|185.199.111.153|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -62,7 +62,7 @@ following domain name
 For our URL it would be:
 
 ~~~
-$ wget -r -np -D carpentries-incubator.github.io http://carpentries-incubator.github.io/
+$ wget -r -np -D carpentries-incubator.github.io {{ site.url }}
 ~~~
 {: .bash}
 
@@ -70,7 +70,7 @@ To restrict retrieval to a particular extension(s)
 we can use the `-A` option followed by a comma separated list:
 
 ~~~
-wget -r -np -D carpentries-incubator.github.io -A html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+wget -r -np -D carpentries-incubator.github.io -A html {{ site.url }}/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -113,11 +113,11 @@ Please refer to the man page by typing `man wget` in the shell for more informat
 Alternatively, we can use `cURL`.
 It supports a much larger range of protocols including common mail based protocols like pop3 and smtp.
 
-To download this lesson (located at http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html)
+To download this lesson (located at {{ site.url }}/shell-extras/04-file-transfer/index.html)
 from the web via HTTP we can simply type:
 
 ~~~
-$ curl -o index.html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+$ curl -o index.html {{ site.url }}/shell-extras/04-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -146,24 +146,24 @@ If we wanted to enhance the functionality we have we could use information
 from the pipes and filters section, which is lesson 4 from the unix shell session.
 
 For example, we could type
-`curl https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`
+`curl {{ site.url }}/04-file-transfer/index.html | grep curl`
 which would tell us that indeed this URL contains the string curl.
 We could make the output cleaner by limiting the output of curl to just the
 file contents by using the `-s` option
-(e.g. `curl -s https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`).
+(e.g. `curl -s {{ site.url }}/04-file-transfer/index.html | grep curl`).
 
 If we wanted only the text and not the html tags in our output we could use
 html to text parser such as `html2text`.
 
 ~~~
-$ curl -s https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
+$ curl -s {{ site.url }}/04-file-transfer/index.html | html2text | grep curl
 ~~~
 {: .bash}
 
 With `wget`, we can obtain the same results by typing:
 
 ~~~
-$ wget -q -D carpentries-incubator.github.io -O /dev/stdout https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
+$ wget -q -D carpentries-incubator.github.io -O /dev/stdout {{ site.url }}/04-file-transfer/index.html | html2text | grep curl
 ~~~
 {: .bash}
 
@@ -214,7 +214,7 @@ Finally we give the source and destination directories, just like the cp or scp
 command.
 
 ~~~
-rsync -a -v -e ssh 03-file-transfer vlad@euphoric.edu:
+rsync -a -v -e ssh 04-file-transfer vlad@euphoric.edu:
 ~~~
 {: .bash}
 
