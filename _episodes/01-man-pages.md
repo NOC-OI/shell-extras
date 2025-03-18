@@ -175,5 +175,19 @@ it will often produce more helpful results.
 > {: .solution}
 {: .challenge}
 
+> ## Looking up extra options to ls
+> One of Nelle's colleagues always uses the the `-lhtr` option when they run ls.
+> Nelle asks them what this does and they can't quite remember but it always 
+> gives the format they prefer. Lookup in the man page for `ls` what these
+> options do.
+>
+> > ## Solution
+> > - `-l` lists in long format which includes file creation time, ownership,
+> > permissions and size.
+> > - `-h` enables "human readable" file size suffixes such as K, M and G.
+> > - `-t` sorts by time.
+> > - `-r` reverse the order, so the newest files come last.
+> {: .solution}
+{: .challenge}
 
 {% include links.md %}
