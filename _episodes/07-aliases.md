@@ -34,7 +34,7 @@ alias up='cd ..'
 alias upup='cd ../..'
 alias upupup='cd ../../..'
 ~~~
-{: .bash}
+{: .language-bash}
 
 Let's try these commands out.
 
@@ -43,7 +43,7 @@ cd /usr/local/bin
 upup
 pwd
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 /usr
@@ -55,7 +55,7 @@ We can also remove a shortcut with `unalias`.
 ~~~
 unalias upupup
 ~~~
-{: .bash}
+{: .language-bash}
 
 If we create one of these aliases in a bash session, they will only
 last until the end of that session. Fortunately, bash allows us to
@@ -78,7 +78,7 @@ Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one
 echo "alias up='cd ..'" >> ~/.bashrc
 tail -n 1 ~/.bashrc
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 alias up='cd ..'
@@ -94,7 +94,7 @@ cd /usr/local/bin
 up
 pwd
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 /usr/local
@@ -110,7 +110,7 @@ if [ -f $HOME/.bashrc ]; then
         source $HOME/.bashrc
 fi
 ~~~
-{: .bash}
+{: .language-bash}
 
 ## Customizing your prompt
 
@@ -120,7 +120,7 @@ variable. To set our prompt to be `$ `, then we can run the command
 ~~~
 export PS1="$ "
 ~~~
-{: .bash}
+{: .language-bash}
 
 To set the prompt to `$ ` for all bash sessions, add this line to the
 end of `.bashrc`.
@@ -133,7 +133,7 @@ we would set
 ~~~
 export PS1="\u@\h[\W]: "
 ~~~
-{: .bash}
+{: .language-bash}
 
 where `\u` represents username, `\h` represents hostname, and `\W`
 represents the current directory. 

@@ -26,17 +26,17 @@ the HTTP, HTTPS and FTP protocols. It is widely used by Unix-like users and
 is available with most Linux distributions.
 
 To download this lesson (located at
-<https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html>)
+<{{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html>)
 from the web via HTTP we can simply type:
 
 ~~~
-$ wget https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+$ wget {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 --2021-05-29 02:12:18—
-https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+{{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 Resolving carpentries-incubator.github.io (carpentries-incubator.github.io)... 185.199.111.153, 185.199.110.153, 185.199.109.153, ...
 Connecting to carpentries-incubator.github.io (carpentries-incubator.github.io)|185.199.111.153|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -53,7 +53,7 @@ Alternatively, you can add more options, which are in the form:
 ~~~
 wget -r -np -D domain_name target_URL
 ~~~
-{: .bash}
+{: .language-bash}
 
 where `-r` means recursively crawl to other files and directories, `-np` means
 avoid crawling to parent directories, and `-D` means to target only the
@@ -62,31 +62,31 @@ following domain name
 For our URL it would be:
 
 ~~~
-$ wget -r -np -D carpentries-incubator.github.io http://carpentries-incubator.github.io/
+$ wget -r -np -D carpentries-incubator.github.io {{ site.url }}{{ site.baseurl }}
 ~~~
-{: .bash}
+{: .language-bash}
 
 To restrict retrieval to a particular extension(s)
 we can use the `-A` option followed by a comma separated list:
 
 ~~~
-wget -r -np -D carpentries-incubator.github.io -A html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+wget -r -np -D carpentries-incubator.github.io -A html {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 ~~~
-{: .bash}
+{: .language-bash}
 
 We can also clone a webpage with its local dependencies:
 
 ~~~
 $ wget -mkq target_URL
 ~~~
-{: .bash}
+{: .language-bash}
 
 We could also clone the entire website:
 
 ~~~
 $ wget -mkq -np -D domain_name domain_name_URL
 ~~~
-{: .bash}
+{: .language-bash}
 
 and add the `-nH` option if we do not want a subdirectory created for the websites content:
 
@@ -95,7 +95,7 @@ e.g.
 ~~~
 $ wget -mkq -np -nH -D example.com http://example.com
 ~~~
-{: .bash}
+{: .language-bash}
 
 where:
 
@@ -113,13 +113,13 @@ Please refer to the man page by typing `man wget` in the shell for more informat
 Alternatively, we can use `cURL`.
 It supports a much larger range of protocols including common mail based protocols like pop3 and smtp.
 
-To download this lesson (located at http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html)
+To download this lesson (located at {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html)
 from the web via HTTP we can simply type:
 
 ~~~
-$ curl -o index.html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+$ curl -o index.html {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -133,7 +133,7 @@ This input to curl is in the form:
 ~~~
 curl -o filename_for_local_machine target_url
 ~~~
-{: .bash}
+{: .language-bash}
 
 where the `-o` option says write the output to a file instead of the stdout
 (the screen), and file_name_for_local_machine is any file name you choose to
@@ -146,26 +146,26 @@ If we wanted to enhance the functionality we have we could use information
 from the pipes and filters section, which is lesson 4 from the unix shell session.
 
 For example, we could type
-`curl https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`
+`curl {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html | grep curl`
 which would tell us that indeed this URL contains the string curl.
 We could make the output cleaner by limiting the output of curl to just the
 file contents by using the `-s` option
-(e.g. `curl -s https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`).
+(e.g. `curl -s {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html | grep curl`).
 
 If we wanted only the text and not the html tags in our output we could use
 html to text parser such as `html2text`.
 
 ~~~
-$ curl -s https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
+$ curl -s {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html | html2text | grep curl
 ~~~
-{: .bash}
+{: .language-bash}
 
 With `wget`, we can obtain the same results by typing:
 
 ~~~
-$ wget -q -D carpentries-incubator.github.io -O /dev/stdout https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
+$ wget -q -D carpentries-incubator.github.io -O /dev/stdout {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html | html2text | grep curl
 ~~~
-{: .bash}
+{: .language-bash}
 
 `wget` offers more functionality natively than `curl` for retrieving entire
 directories. We could use `wget` to first retrieve an entire directory and
@@ -195,11 +195,28 @@ Please refer to the man pages by typing `man wget`, `man curl`, and
 > > ~~~
 > > wget -c https://www.zenodo.org/record/5307070/files/S-only-10000x.tar.gz
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > {: .solution}
 {: .challenge}
 
-## rsync
+> ## Download an additional dataset for Nelle
+> Nelle has another dataset to process from July 4th 2012.
+> It is located online at {{site.url}}{{ site.baseurl }}/data/north-pacific-gyre-2012-07-04.zip.
+> Login to a remote system over SSH and download this file on there using
+> either Wget or cURL. Then extract the data from this file using the `unzip`
+> command.
+>
+> > ## Solution
+> > ~~~
+> > ssh nelle@neptune.aquatic.edu
+> > wget {{ site.url }}{{ site.baseurl }}/data/north-pacific-gyre-2012-07-04.zip
+> > unzip north-pacific-gyre-2012-07-04.zip
+> > ~~~
+> > {: .language-bash}
+> {: .solution}
+{: .challenge}
+
+## Rsync
 
 Rsync is a utility for synchronising directories between computers (and on the
 same computer). It can use the SSH protocol for copying to a remote computer
@@ -214,9 +231,9 @@ Finally we give the source and destination directories, just like the cp or scp
 command.
 
 ~~~
-rsync -a -v -e ssh 03-file-transfer vlad@euphoric.edu:
+rsync -a -v -e ssh 04-file-transfer nelle@neptune.aquatic.edu:
 ~~~
-{: .bash}
+{: .language-bash}
 
 ### Why use rsync instead of scp?
 Rsync only transfers files (or parts of files) if they don't exist in the
