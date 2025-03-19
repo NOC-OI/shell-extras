@@ -3,7 +3,8 @@ title: Streams
 teaching: 10
 exercises: 0
 questions:
-- ""
+- "What are the standard output streams?"
+- "How can I redirect them?"
 objectives:
 - "Understand the difference betwen STDERR and STDOUT."
 - "Split STDOUT and STDERR output with the 2> and 1> redirects."
