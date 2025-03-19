@@ -26,17 +26,17 @@ the HTTP, HTTPS and FTP protocols. It is widely used by Unix-like users and
 is available with most Linux distributions.
 
 To download this lesson (located at
-<{{ site.url }}{{ site.baseurl }}04-file-transfer/index.html>)
+<{{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html>)
 from the web via HTTP we can simply type:
 
 ~~~
-$ wget {{ site.url }}{{ site.baseurl }}04-file-transfer/index.html
+$ wget {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 ~~~
 {: .language-bash}
 
 ~~~
 --2021-05-29 02:12:18—
-{{ site.url }}{{ site.baseurl }}04-file-transfer/index.html
+{{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 Resolving carpentries-incubator.github.io (carpentries-incubator.github.io)... 185.199.111.153, 185.199.110.153, 185.199.109.153, ...
 Connecting to carpentries-incubator.github.io (carpentries-incubator.github.io)|185.199.111.153|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -70,7 +70,7 @@ To restrict retrieval to a particular extension(s)
 we can use the `-A` option followed by a comma separated list:
 
 ~~~
-wget -r -np -D carpentries-incubator.github.io -A html {{ site.url }}{{ site.baseurl }}shell-extras/04-file-transfer/index.html
+wget -r -np -D carpentries-incubator.github.io -A html {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 ~~~
 {: .language-bash}
 
@@ -113,11 +113,11 @@ Please refer to the man page by typing `man wget` in the shell for more informat
 Alternatively, we can use `cURL`.
 It supports a much larger range of protocols including common mail based protocols like pop3 and smtp.
 
-To download this lesson (located at {{ site.url }}{{ site.baseurl }}04-file-transfer/index.html)
+To download this lesson (located at {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html)
 from the web via HTTP we can simply type:
 
 ~~~
-$ curl -o index.html {{ site.url }}{{ site.baseurl }}04-file-transfer/index.html
+$ curl -o index.html {{ site.url }}{{ site.baseurl }}/04-file-transfer/index.html
 ~~~
 {: .language-bash}
 
