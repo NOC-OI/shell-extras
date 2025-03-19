@@ -30,7 +30,7 @@ To download this lesson (located at
 from the web via HTTP we can simply type:
 
 ~~~
-$ wget {{ site.url }}/04-file-transfer/index.html
+$ wget {{ site.url }}/{{ site.baseurl }}04-file-transfer/index.html
 ~~~
 {: .language-bash}
 
