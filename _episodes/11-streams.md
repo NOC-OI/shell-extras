@@ -7,7 +7,7 @@ questions:
 - "How can I redirect them?"
 objectives:
 - "Understand the difference betwen STDERR and STDOUT."
-- "Split STDOUT and STDERR output with the 2> and 1> redirects."
+- "Split STDOUT and STDERR output with 2> and 1> redirects."
 - "Use the `tee` command to redirect to a file and the screen."
 keypoints:
 - ""
@@ -19,7 +19,10 @@ There are three standard input/outputs streams created when you run a Unix comma
 
 STDIN the the stream by which the program you are running is provided with its input data. Unix automatically connects this to your terminal keyboard. 
 
+~~~
 Example STDIN
+~~~
+{: .language-bash}
 
 ## STDOUT vs STDERR
 
