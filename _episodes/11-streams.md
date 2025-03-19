@@ -28,19 +28,19 @@ STDOUT and STDERR are both connected to your terminal screen. STDOUT is the stre
 ~~~
 Example STDOUT
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Example STDERR
 ~~~
-{: .bash}
+{: .language-bash}
 
 Because STDOUT and STDERR both automatically displayed by your terminal, it might not immediately be obvious that these two streams are different.
 
 ~~~
 Example of STDOUT and STDERR mixed together
 ~~~
-{: .bash}
+{: .language-bash}
 
 However, they can be separated. This means that you can stop error messages and warnings being mixed in with your output. 
 
@@ -49,14 +49,14 @@ Let's remind ourselves of how to redirect the output from a command to a text fi
 ~~~
 Example of redirection
 ~~~
-{: .bash}
+{: .language-bash}
 
 Now let'd try redirecting the output of a command to a text file, but this time, let's use a command we know will generate an error.
 
 ~~~
 Example of redirection with an error printed to the terminal
 ~~~
-{: .bash}
+{: .language-bash}
 
 In this case, the error is still printed to the terminal, because `>`, by default, redirects STDOUT, not STDERR. 
 
@@ -67,21 +67,21 @@ We've just seen that `>` redirects the STDOUT. However, it can be used to redire
 ~~~
 Same example of redirection as before (without error), but using 1> rather than >. 
 ~~~
-{: .bash}
+{: .language-bash}
 
 To redirct STDERR, use `2>`. 
 
 ~~~
 Same example of redirection as two above but with the error redirected to a file.
 ~~~
-{: .bash}
+{: .language-bash}
 
 It is also possible to redirect both streams at once. If you want both streams redirected to the same file you can do:
 
 ~~~
 Example of both STDERR and STDOUT being redirected to a file by 2>&1.
 ~~~
-{: .bash}
+{: .language-bash}
 
 This redirects STDOUT to a text file, then redirects STDERR to whever STDOUT is being redirected to.
 
@@ -90,7 +90,7 @@ If you want to redirect STDERR and STDOUT to two different files, this can be do
 ~~~
 Example of STDERR and STDOUT being redirected to two different files.
 ~~~
-{: .bash}
+{: .language-bash}
 
 
 ## The `tee` command 
