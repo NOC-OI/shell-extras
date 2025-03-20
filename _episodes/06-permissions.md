@@ -328,7 +328,42 @@ It gives someone the right to *traverse* the directory, but not to look at its c
 The distinction is subtle, so let's have a look at an example.
 Nelle's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
-![execute]({% link data/x-for-directories.png %} "Execute Permission for Directories")
+<style>
+  ul {
+      list-style-type: none;
+      padding-left: 20px;
+  }
+  li {
+      margin: 5px 0;
+  }
+  .folder::before {
+      content: "📁 ";
+  }
+  .file::before {
+      content: "📄 ";
+  }
+</style>
+<ul>
+  <li class="folder">nelle
+    <ul>
+      <li class="folder">venus <strong>r-x</strong>
+        <ul>
+          <li class="file">notes</li>
+        </ul>
+      </li>
+      <li class="folder">mars <strong>r--</strong>
+        <ul>
+          <li class="file">notes</li>
+        </ul>
+      </li>
+      <li class="folder">pluto <strong>--x</strong>
+        <ul>
+          <li class="file">notes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 Each of these has a subdirectory in turn called `notes`,
 and those sub-subdirectories contain various files.
@@ -379,11 +414,11 @@ e.g., `bash file_info.sh example.txt`. If we run the code directly but no sheban
 is given, or the permission is not given, the code will not run ("Permission denied" error).
 
 > ## Add shebang and execute permission to Nelle's scripts
-> Nelle has three scripts in the `north-pacific-gyre` directory called 
+> Nelle has three scripts in the `north-pacific-gyre` directory called
 > `do-stats.sh`, `goostats` and `goodiff`.
 >
-> Edit each of these using `nano` (or your text editor of choice) and add a 
-> `#!/bin/bash` at the start. Give the owner and group execute permission on 
+> Edit each of these using `nano` (or your text editor of choice) and add a
+> `#!/bin/bash` at the start. Give the owner and group execute permission on
 > these scripts too.
 >
 > Previously we ran `do-stats.sh` by using the command:
@@ -393,7 +428,7 @@ is given, or the permission is not given, the code will not run ("Permission den
 > {: .language-bash}
 >
 > How can we run the script now?
-> 
+>
 > > ## Solution
 > > ~~~
 > > nano do-stats.sh
@@ -404,7 +439,7 @@ is given, or the permission is not given, the code will not run ("Permission den
 > > ~~~
 > > {: .language-bash}
 > >
-> > This means we can now start the scrit without the `bash` command. For 
+> > This means we can now start the scrit without the `bash` command. For
 > > example:
 > > ~~~
 > > ./do-stats.sh <filename>
