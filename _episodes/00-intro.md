@@ -133,7 +133,7 @@ help run Nelle's pipeline. This did the following:
 
 - Looped through a list of files
 - Displays the filename it is currently processing on screen
-- Runs the `goostats` script on the file and creates an output file with a name starting winth `stats-`
+- Runs the `goostats` script on the file and creates an output file with a name starting with `stats-`
 
 This script is saved as do-stats.sh and contains the following code:
 
