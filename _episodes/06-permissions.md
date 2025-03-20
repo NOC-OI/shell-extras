@@ -141,10 +141,10 @@ ls -l
 {: .language-bash}
 
 ~~~
--rwxrwxrwx 1 vlad bio  4215  2010-07-23 20:04 final.grd
--rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
--rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
--rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
+-rwxrwxrwx 1 nelle bio  4215  2010-07-23 20:04 final.grd
+-rw-rw-r-- 1 nelle bio  1158  2010-07-11 08:22 safety.txt
+-rwxr-xr-x 1 nelle bio 31988  2010-07-23 20:04 setup
+-rw-rw-r-- 1 nelle bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
 {: .output}
 
@@ -161,7 +161,7 @@ last changed a file.
 
 Next to the modification time is the file's size in bytes
 and the names of the user and group that owns it
-(in this case, `vlad` and `bio` respectively).
+(in this case, `nelle` and `bio` respectively).
 We'll skip over the second column for now
 (the one showing `1` for each file)
 because it's the first column that we care about most.
@@ -184,7 +184,7 @@ In this case, it's 'r-x' again, so everyone on the system can look at the file's
 To change permissions, we use the `chmod` command
 (whose name stands for "change mode").
 Here's a long-form listing showing the permissions on the final grades
-in the course Vlad is teaching:
+in the course Nelle is teaching:
 
 ~~~
 ls -l final.grd
@@ -192,7 +192,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
+-rwxrwxrwx 1 nelle bio  4215  2010-08-29 22:30 final.grd
 ~~~
 {: .output}
 
@@ -220,7 +220,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
+-rw-rwxrwx 1 nelle bio  4215  2010-08-30 08:19 final.grd
 ~~~
 {: .output}
 
@@ -233,7 +233,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
+-rw-r--rw- 1 nelle bio  4215  2010-08-30 08:19 final.grd
 ~~~
 {: .output}
 
@@ -247,7 +247,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
+-rw-r----- 1 nelle bio  4215  2010-08-30 08:20 final.grd
 ~~~
 {: .output}
 
@@ -308,12 +308,12 @@ ls -a -l
 {: .language-bash}
 
 ~~~
-drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
-drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
--rw-r----- 1 vlad bio  1158  2010-07-11 08:22 final.grd
--rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
--rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
--rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
+drwxr-xr-x 1 nelle bio     0  2010-08-14 09:55 .
+drwxr-xr-x 1 nelle bio  8192  2010-08-27 23:11 ..
+-rw-r----- 1 nelle bio  1158  2010-07-11 08:22 final.grd
+-rw-rw-r-- 1 nelle bio  1158  2010-07-11 08:22 safety.txt
+-rwxr-xr-x 1 nelle bio 31988  2010-07-23 20:04 setup
+-rw-rw-r-- 1 nelle bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
 {: .output}
 
@@ -326,7 +326,7 @@ A directory isn't a program&mdash;how can we "run" it?
 In fact, 'x' means something different for directories.
 It gives someone the right to *traverse* the directory, but not to look at its contents.
 The distinction is subtle, so let's have a look at an example.
-Vlad's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
+Nelle's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
 ![execute]({% link fig/x-for-directories.svg %} "Execute Permission for Directories")
 
