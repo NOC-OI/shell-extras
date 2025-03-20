@@ -31,16 +31,16 @@ $ set
 
 ~~~
 COMPUTERNAME=TURING
-HOME=/home/vlad
+HOME=/home/nelle
 HOMEDRIVE=C:
 HOSTNAME=TURING
 HOSTTYPE=i686
 NUMBER_OF_PROCESSORS=4
 OS=Windows_NT
-PATH=/Users/vlad/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-PWD=/home/vlad
+PATH=/Users/nelle/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PWD=/home/nelle
 UID=1000
-USERNAME=vlad
+USERNAME=nelle
 ...
 ~~~
 {: .output}
@@ -83,7 +83,7 @@ To show how this works,
 here are the components of `PATH` listed one per line:
 
 ~~~
-/Users/vlad/bin
+/Users/nelle/bin
 /usr/local/git/bin
 /usr/bin
 /bin
@@ -98,12 +98,12 @@ there are actually three programs called `analyze`
 in three different directories:
 `/bin/analyze`,
 `/usr/local/bin/analyze`,
-and `/users/vlad/analyze`.
+and `/users/nelle/analyze`.
 Since the shell searches the directories in the order they're listed in `PATH`,
 it finds `/bin/analyze` first and runs that.
-Notice that it will *never* find the program `/users/vlad/analyze`
+Notice that it will *never* find the program `/users/nelle/analyze`
 unless we type in the full path to the program,
-since the directory `/users/vlad` isn't in `PATH`.
+since the directory `/users/nelle` isn't in `PATH`.
 
 ## Showing the Value of a Variable
 
@@ -129,7 +129,7 @@ $ echo $HOME
 {: .language-bash}
 
 ~~~
-/home/vlad
+/home/nelle
 ~~~
 {: .output}
 
@@ -137,7 +137,7 @@ The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
 This works just like wildcards:
 the shell does the replacement *before* running the program we've asked for.
-Thanks to this expansion, what we actually run is `echo /home/vlad`,
+Thanks to this expansion, what we actually run is `echo /home/nelle`,
 which displays the right thing.
 
 ## Creating and Changing Variables
@@ -178,7 +178,7 @@ which meant something really important decades ago,
 and is now just a convention everyone follows without understanding why.)
 
 For example,
-here are two lines in `/home/vlad/.bashrc`:
+here are two lines in `/home/nelle/.bashrc`:
 
 ~~~
 export SECRET_IDENTITY=Dracula
