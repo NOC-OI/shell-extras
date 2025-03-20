@@ -345,40 +345,80 @@ She's allowed to go through `pluto`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 
-> ## Shebang
+## Shebang
+
+Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+~~~{.bash}
+#!/bin/bash
+~~~
+or,
+~~~{.bash}
+#!/usr/bin/env bash
+~~~
+
+at the top of the script. The second approach is more portable and recommended.
+For instance, check the `file_info.sh` script in the `code` directory.
+First, after creating or downloading the script, we need to make it executable using `chmod` command.
+
+~~~
+chmod u+x file_info.sh
+~~~
+{: .language-bash}
+
+The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
+Then we can run the script using the following command:
+
+~~~
+./file_info.sh example.txt
+~~~
+{: .langauge-bash}
+
+Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
+We still run the code without shebang, i.e., by telling the interpreter to run the code,
+e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
+is given, or the permission is not given, the code will not run ("Permission denied" error).
+
+> ## Add shebang and execute permission to Nelle's scripts
+> Nelle has three scripts in the `north-pacific-gyre` directory called 
+> `do-stats.sh`, `goostats` and `goodiff`.
 >
-> Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+> Edit each of these using `nano` (or your text editor of choice) and add a 
+> `#!/bin/bash` at the start. Give the owner and group execute permission on 
+> these scripts too.
 >
-> ~~~{.bash}
-> #!/bin/bash
+> Previously we ran `do-stats.sh` by using the command:
 > ~~~
-> or,
-> ~~~{.bash}
-> #!/usr/bin/env bash
-> ~~~
->
-> at the top of the script. The second approach is more portable and recommended.
-> For instance, check the `file_info.sh` script in the `code` directory.
-> First, after creating or downloading the script, we need to make it executable using `chmod` command.
->
-> ~~~
-> chmod u+x file_info.sh
+> bash ./do-stats.sh <filename>
 > ~~~
 > {: .language-bash}
 >
-> The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
-> Then we can run the script using the following command:
->
-> ~~~
-> ./file_info.sh example.txt
-> ~~~
-> {: .langauge-bash}
->
-> Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
-> We still run the code without shebang, i.e., by telling the interpreter to run the code,
-> e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
-> is given, or the permission is not given, the code will not run ("Permission denied" error).
-{: .callout}
+> How can we run the script now?
+> 
+> > ## Solution
+> > ~~~
+> > nano do-stats.sh
+> > nano goostats
+> > nano goodiff
+> > chmod ug+x do-stats.sh
+> > chmod ug+x goo*
+> > ~~~
+> > {: .language-bash}
+> >
+> > This means we can now start the scrit without the `bash` command. For 
+> > example:
+> > ~~~
+> > ./do-stats.sh <filename>
+> > ~~~
+> > {: .language-bash}
+> >
+> {: .solution}
+{: .challenge}
+
+
+
+
+
+
 
 ## User Groups and Members
 
