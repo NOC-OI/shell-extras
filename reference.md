@@ -7,45 +7,43 @@ layout: reference
 {:auto_ids}
 
 remote login
-: FIXME
+: The ability to log into a remote computer, typically over a network, as if you were physically present at the computer.
 
 remote login server
-: FIXME
+: A computer that allows remote login.
 
 SSH daemon
-: FIXME
+: A program that runs in the background on a server and waits for incoming SSH connections.
 
 secure shell
-: FIXME
+: A cryptographic network protocol for operating network services securely over an unsecured network.
 
 SSH key
-: FIXME
+: A cryptographic key pair used for authenticating users in the SSH protocol.
 
 SSH protocol
-: FIXME
+: A cryptographic network protocol for operating network services securely over an unsecured network.
 
 command
-: FIXME
+: A directive to a computer program acting as an interpreter of some kind, in order to perform a specific task.
 
 user name
-: FIXME
+: The name of a user account on a computer system.
 
 user ID
-: FIXME
+: A unique identifier assigned to a user account on a computer system.
 
 user group
-: FIXME
+: A collection of user accounts that share access rights and permissions.
 
 user group name
-: FIXME
+: The name of a user group.
 
 user group ID
-: FIXME
+: A unique identifier assigned to a user group.
 
 access control lists
-: FIXME
+: A list of permissions attached to an object that specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.
 
 search path
-: FIXME
-
-
+: A list of directories that the operating system searches when looking for a file.

@@ -14,18 +14,14 @@ keypoints:
 - "File permissions describe who and what can read, write, modify, and access a file."
 - "Use `ls -l` to view the permissions for a specific file."
 - "Use `chmod` to change permissions on a file or directory."
+- "Use `chmod 777` carefully, as it grants all permissions to everyone."
+- "Access Control Lists (ACLs) provide finer-grained permission control."
 ---
 
-Unix controls who can read, modify, and run files using *permissions*.
-We'll discuss how Windows handles permissions at the end of the section:
-the concepts are similar,
-but the rules are different.
+Unix controls who can read, modify, and execute files using *permissions*. We'll also discuss Windows permissions later, as the concepts are similar but implementation differs.
 
-Let's start with Nelle.
-She has a unique [user name]({{ page.root }}/reference/{{ site.index }}#user-name),
-`nnemo`,
-and a [user ID]({{ page.root }}/reference/{{ site.index }}#user-id),
-1404.
+Let's start with a normal user called Nelle.
+She has a unique [user name]({{ page.root }}/reference/{{ site.index }}#user-name) (e.g., `nelle`), and a [user ID]({{ page.root }}/reference/{{ site.index }}#user-id), (a unique number, like `1404`).
 
 > ## Why Integer IDs?
 >
@@ -52,9 +48,12 @@ and a [user ID]({{ page.root }}/reference/{{ site.index }}#user-id),
 Users can belong to any number of [groups]({{ page.root }}/reference/{{ site.index }}#user-group),
 each of which has a unique [group name]({{ page.root }}/reference/{{ site.index }}#user-group-name)
 and numeric [group ID]({{ page.root }}/reference/{{ site.index }}#user-group-id).
-The list of who's in what group is usually stored in the file `/etc/group`.
-(If you're in front of a Unix machine right now,
-try running `cat /etc/group` to look at that file.)
+The list of who's in what group is usually stored in the file `/etc/group`. To see all the groups on a Unix system, you can run:
+
+~~~
+cat /etc/group
+~~~
+{: .language-bash}
 
 Now let's look at files and directories.
 Every file and directory on a Unix computer belongs to one owner and one group.
@@ -64,9 +63,9 @@ the operating system stores the numeric IDs of the user and group that own it.
 The user-and-group model means that
 for each file
 every user on the system falls into one of three categories:
-the owner of the file,
-someone in the file's group,
-and everyone else.
+1. **Owner - the owner of the file (User - `u`)**
+2. **Group - someone in the file's group  (`g`)**
+3. **Others - everyone else. (`o`)**
 
 For each of these three categories,
 the computer keeps track of
@@ -79,9 +78,9 @@ For example, if a file had the following set of permissions:
 
 <table class="table table-striped">
 <tr><td></td><th>user</th><th>group</th><th>all</th></tr>
-<tr><th>read</th><td>yes</td><td>yes</td><td>no</td></tr>
-<tr><th>write</th><td>yes</td><td>no</td><td>no</td></tr>
-<tr><th>execute</th><td>no</td><td>no</td><td>no</td></tr>
+<tr><th>read (r)</th><td>yes</td><td>yes</td><td>no</td></tr>
+<tr><th>write (w)</th><td>yes</td><td>no</td><td>no</td></tr>
+<tr><th>execute (x)</th><td>no</td><td>no</td><td>no</td></tr>
 </table>
 
 it would mean that:
@@ -91,6 +90,16 @@ it would mean that:
 * everybody else can do nothing with it at all.
 
 Let's look at this model in action.
+Now let's download some sample data for test and for checking the permission. So, please run:
+
+~~~
+# to download the data
+wget {{site.url}}{{ site.baseurl }}/data/labs.zip
+# to unzip the data
+unzip -l labs.zip
+~~~
+{: .language-bash}
+
 If we `cd` into the `labs` directory and run `ls -F`,
 it puts a `*` at the end of `setup`'s name.
 This is its way of telling us that `setup` is executable,
@@ -101,11 +110,10 @@ that it's (probably) something the computer can run.
 cd labs
 ls -F
 ~~~
-
 {: .language-bash}
 
 ~~~
-safety.txt    setup*     waiver.txt
+final.grd   safety.txt    setup*     waiver.txt
 ~~~
 
 {: .output}
@@ -124,6 +132,7 @@ safety.txt    setup*     waiver.txt
 > (such as a web browser).
 {: .callout}
 
+
 Now let's run the command `ls -l`:
 
 ~~~
@@ -132,6 +141,7 @@ ls -l
 {: .language-bash}
 
 ~~~
+-rwxrwxrwx 1 vlad bio  4215  2010-07-23 20:04 final.grd
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
@@ -246,6 +256,34 @@ the 'o' signals that we're changing permissions for "others",
 and since there's nothing on the right of the "=",
 "others"'s new permissions are empty.
 
+Alternatively, you can also use numeric notation:
+
+~~~
+chmod 640 final.grd  # Equivalent to rw-r-----
+~~~
+
+This sets:
+- Owner: **read (`r`)** and **write (`w`)**.
+- Group: **read (`r`)** only.
+- Others: No permissions.
+
+
+
+This is the meaning of the numbers:
+
+
+<table class="table table-striped">
+<tr><th>Number</th><th>Meaning</th></tr>
+<tr><td>7</td><td>read, write, and execute</td></tr>
+<tr><td>6</td><td>read and write</td></tr>
+<tr><td>5</td><td>read and execute</td></tr>
+<tr><td>4</td><td>read only</td></tr>
+<tr><td>3</td><td>write and execute</td></tr>
+<tr><td>2</td><td>write only</td></tr>
+<tr><td>1</td><td>execute only</td></tr>
+<tr><td>0</td><td>none</td></tr>
+</table>
+
 We can search by permissions, too.
 Here, for example, we can use `-type f -perm -u=x` to find files
 that the user can execute:
@@ -256,8 +294,7 @@ find . -type f -perm -u=x
 {: .language-bash}
 
 ~~~
-./tools/format
-./tools/stats
+./setup
 ~~~
 {: .output}
 
@@ -273,6 +310,7 @@ ls -a -l
 ~~~
 drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
 drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
+-rw-r----- 1 vlad bio  1158  2010-07-11 08:22 final.grd
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
@@ -307,59 +345,148 @@ She's allowed to go through `pluto`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 
-## Shebang
+> ## Shebang
+>
+> Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+>
+> ~~~{.bash}
+> #!/bin/bash
+> ~~~
+> or,
+> ~~~{.bash}
+> #!/usr/bin/env bash
+> ~~~
+>
+> at the top of the script. The second approach is more portable and recommended.
+> For instance, check the `file_info.sh` script in the `code` directory.
+> First, after creating or downloading the script, we need to make it executable using `chmod` command.
+>
+> ~~~
+> chmod u+x file_info.sh
+> ~~~
+> {: .language-bash}
+>
+> The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
+> Then we can run the script using the following command:
+>
+> ~~~
+> ./file_info.sh example.txt
+> ~~~
+> {: .langauge-bash}
+>
+> Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
+> We still run the code without shebang, i.e., by telling the interpreter to run the code,
+> e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
+> is given, or the permission is not given, the code will not run ("Permission denied" error).
+{: .callout}
 
-Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+## User Groups and Members
 
-~~~{.bash}
-#!/bin/bash
+In Linux, users can belong to one or more groups, which help define access control for files and directories.
+Each user has a primary group and can be part of additional groups. Groups are defined in the `/etc/group` file.
+
+To list a user's group memberships, run:
+
 ~~~
-
-or,
-
-~~~{.bash}
-#!/usr/bin/env bash
-~~~
-
-at the top of the script. The second approach is more portable and recommended.
-For instance, check the `file_info.sh` script in the `code` directory.
-First, after creating or downloading the script, we need to make it executable using `chmod` command.
-
-~~~
-chmod u+x file_info.sh
+groups username
 ~~~
 {: .language-bash}
 
-The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
-Then we can run the script using the following command:
+For example, running `groups nelle` might return:
 
 ~~~
-./file_info.sh example.txt
+nelle : nelle developers data-science
 ~~~
-{: .langauge-bash}
+{: .output}
 
-Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
-We still run the code without shebang, i.e., by telling the interpreter to run the code,
-e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
-is given, or the permission is not given, the code will not run ("Permission denied" error).
+This means that Nelle belongs to the `developers` and `data-science` groups in addition to her own user group.
 
-## What about Windows?
+To view all groups on the system, use:
 
-Those are the basics of permissions on Unix.
-As we said at the outset, though, things work differently on Windows.
-There, permissions are defined by [access control lists]({{ page.root }}/reference/{{ site.index }}#access-control-list),
-or ACLs.
-An ACL is a list of pairs, each of which combines a "who" with a "what".
+~~~
+cat /etc/group
+~~~
+{: .language-bash}
+
+Adding a user to a group requires administrative privileges. The command to add a user to a group is:
+
+~~~
+sudo usermod -aG group_name username
+~~~
+{: .language-bash}
+
+For example, to add `nelle` to the `sysadmin` group:
+
+~~~
+sudo usermod -aG sysadmin nelle
+~~~
+{: .language-bash}
+
+To verify the change, log out and log back in, then rerun `groups`.
+
+To remove a user from a group:
+
+~~~
+sudo gpasswd -d username group_name
+~~~
+{: .language-bash}
+
+For example:
+
+~~~
+sudo gpasswd -d nelle developers
+~~~
+{: .language-bash}
+
+
+## Access Control Lists (ACLs)
+
+You can also use [Access Control Lists (ACLs)]({{ page.root }}/reference/{{ site.index }}#access-control-list)
+to grant permissions to specific users or groups. It gives you
+finer-grained control and flexibility over file permissions. However, it is more complex to administer
+and understand on small systems (If you have a large computer system,
+*nothing* is easy to administer or understand.)
 For example,
 you could give the Mummy permission to append data to a file without giving him permission to read or delete it,
 and give Frankenstein permission to delete a file without being able to see what it contains.
 
-This is more flexible that the Unix model,
-but it's also more complex to administer and understand on small systems.
-(If you have a large computer system,
-*nothing* is easy to administer or understand.)
 Some modern variants of Unix support ACLs as well as the older read-write-execute permissions,
 but hardly anyone uses them.
+
+> ## Example of ACLs commands in UNIX
+>
+> - **Set ACL for a specific user:**
+> ~~~
+> setfacl -m u:alex:rwx filename
+> ~~~
+> {: .language-bash}
+>
+> - **Set ACL for a group:**
+> ~~~
+> setfacl -m g:groupname:r filename
+> ~~~
+> {: .language-bash}
+> - **View ACLs on a file:**
+> ~~~
+> getfacl filename
+> ~~~
+> {: .language-bash}
+> - **Remove an ACL entry:**
+> ~~~
+> setfacl -x u:username filename
+> ~~~
+> {: .language-bash}
+{: .callout}
+
+## What about Windows?
+
+In Windows, permissions are defined by [access control lists]({{ page.root }}/reference/{{ site.index }}#access-control-list).
+
+As in Unix, each file and directory has an owner and a group. However, Windows permissions are more complex than Unix permissions.
+
+To view and change permissions in Windows:
+- **File Explorer**: Right-click on a file, select `Properties`, and go to the `Security` tab.
+- **Command Line**: Use the `icacls` command.
 
 > ## Challenge
 >
