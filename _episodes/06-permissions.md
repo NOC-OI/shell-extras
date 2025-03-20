@@ -141,10 +141,10 @@ ls -l
 {: .language-bash}
 
 ~~~
--rwxrwxrwx 1 vlad bio  4215  2010-07-23 20:04 final.grd
--rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
--rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
--rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
+-rwxrwxrwx 1 nelle bio  4215  2010-07-23 20:04 final.grd
+-rw-rw-r-- 1 nelle bio  1158  2010-07-11 08:22 safety.txt
+-rwxr-xr-x 1 nelle bio 31988  2010-07-23 20:04 setup
+-rw-rw-r-- 1 nelle bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
 {: .output}
 
@@ -161,7 +161,7 @@ last changed a file.
 
 Next to the modification time is the file's size in bytes
 and the names of the user and group that owns it
-(in this case, `vlad` and `bio` respectively).
+(in this case, `nelle` and `bio` respectively).
 We'll skip over the second column for now
 (the one showing `1` for each file)
 because it's the first column that we care about most.
@@ -184,7 +184,7 @@ In this case, it's 'r-x' again, so everyone on the system can look at the file's
 To change permissions, we use the `chmod` command
 (whose name stands for "change mode").
 Here's a long-form listing showing the permissions on the final grades
-in the course Vlad is teaching:
+in the course Nelle is teaching:
 
 ~~~
 ls -l final.grd
@@ -192,7 +192,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
+-rwxrwxrwx 1 nelle bio  4215  2010-08-29 22:30 final.grd
 ~~~
 {: .output}
 
@@ -220,7 +220,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
+-rw-rwxrwx 1 nelle bio  4215  2010-08-30 08:19 final.grd
 ~~~
 {: .output}
 
@@ -233,7 +233,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
+-rw-r--rw- 1 nelle bio  4215  2010-08-30 08:19 final.grd
 ~~~
 {: .output}
 
@@ -247,7 +247,7 @@ ls -l final.grd
 {: .language-bash}
 
 ~~~
--rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
+-rw-r----- 1 nelle bio  4215  2010-08-30 08:20 final.grd
 ~~~
 {: .output}
 
@@ -308,12 +308,12 @@ ls -a -l
 {: .language-bash}
 
 ~~~
-drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
-drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
--rw-r----- 1 vlad bio  1158  2010-07-11 08:22 final.grd
--rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
--rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
--rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
+drwxr-xr-x 1 nelle bio     0  2010-08-14 09:55 .
+drwxr-xr-x 1 nelle bio  8192  2010-08-27 23:11 ..
+-rw-r----- 1 nelle bio  1158  2010-07-11 08:22 final.grd
+-rw-rw-r-- 1 nelle bio  1158  2010-07-11 08:22 safety.txt
+-rwxr-xr-x 1 nelle bio 31988  2010-07-23 20:04 setup
+-rw-rw-r-- 1 nelle bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
 {: .output}
 
@@ -326,7 +326,7 @@ A directory isn't a program&mdash;how can we "run" it?
 In fact, 'x' means something different for directories.
 It gives someone the right to *traverse* the directory, but not to look at its contents.
 The distinction is subtle, so let's have a look at an example.
-Vlad's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
+Nelle's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
 ![execute]({% link data/x-for-directories.png %} "Execute Permission for Directories")
 
@@ -345,40 +345,80 @@ She's allowed to go through `pluto`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 
-> ## Shebang
+## Shebang
+
+Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+~~~{.bash}
+#!/bin/bash
+~~~
+or,
+~~~{.bash}
+#!/usr/bin/env bash
+~~~
+
+at the top of the script. The second approach is more portable and recommended.
+For instance, check the `file_info.sh` script in the `code` directory.
+First, after creating or downloading the script, we need to make it executable using `chmod` command.
+
+~~~
+chmod u+x file_info.sh
+~~~
+{: .language-bash}
+
+The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
+Then we can run the script using the following command:
+
+~~~
+./file_info.sh example.txt
+~~~
+{: .langauge-bash}
+
+Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
+We still run the code without shebang, i.e., by telling the interpreter to run the code,
+e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
+is given, or the permission is not given, the code will not run ("Permission denied" error).
+
+> ## Add shebang and execute permission to Nelle's scripts
+> Nelle has three scripts in the `north-pacific-gyre` directory called 
+> `do-stats.sh`, `goostats` and `goodiff`.
 >
-> Shebang is the #! syntax used in scripts to indicate an interpreter for execution under UNIX/Linux operating systems. For shell, we can use two different approaches,
+> Edit each of these using `nano` (or your text editor of choice) and add a 
+> `#!/bin/bash` at the start. Give the owner and group execute permission on 
+> these scripts too.
 >
-> ~~~{.bash}
-> #!/bin/bash
+> Previously we ran `do-stats.sh` by using the command:
 > ~~~
-> or,
-> ~~~{.bash}
-> #!/usr/bin/env bash
-> ~~~
->
-> at the top of the script. The second approach is more portable and recommended.
-> For instance, check the `file_info.sh` script in the `code` directory.
-> First, after creating or downloading the script, we need to make it executable using `chmod` command.
->
-> ~~~
-> chmod u+x file_info.sh
+> bash ./do-stats.sh <filename>
 > ~~~
 > {: .language-bash}
 >
-> The `u+x` option is used to permit the "**u**ser to e**x**ecute" the script.
-> Then we can run the script using the following command:
->
-> ~~~
-> ./file_info.sh example.txt
-> ~~~
-> {: .langauge-bash}
->
-> Shebang is necessary if we want to run the code without explicitly telling Unix what the interpreter is.
-> We still run the code without shebang, i.e., by telling the interpreter to run the code,
-> e.g., `bash file_info.sh example.txt`. If we run the code directly but no shebang
-> is given, or the permission is not given, the code will not run ("Permission denied" error).
-{: .callout}
+> How can we run the script now?
+> 
+> > ## Solution
+> > ~~~
+> > nano do-stats.sh
+> > nano goostats
+> > nano goodiff
+> > chmod ug+x do-stats.sh
+> > chmod ug+x goo*
+> > ~~~
+> > {: .language-bash}
+> >
+> > This means we can now start the scrit without the `bash` command. For 
+> > example:
+> > ~~~
+> > ./do-stats.sh <filename>
+> > ~~~
+> > {: .language-bash}
+> >
+> {: .solution}
+{: .challenge}
+
+
+
+
+
+
 
 ## User Groups and Members
 
