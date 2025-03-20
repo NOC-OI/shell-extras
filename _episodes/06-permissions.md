@@ -328,37 +328,22 @@ It gives someone the right to *traverse* the directory, but not to look at its c
 The distinction is subtle, so let's have a look at an example.
 Nelle's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
-<style>
-  ul {
-      list-style-type: none;
-      padding-left: 20px;
-  }
-  li {
-      margin: 5px 0;
-  }
-  .folder::before {
-      content: "📁 ";
-  }
-  .file::before {
-      content: "📄 ";
-  }
-</style>
-<ul>
-  <li class="folder">nelle
+<ul style="list-style-type: none;padding-left: 20px;">
+  <li>📁 nelle
     <ul>
-      <li class="folder">venus <strong>r-x</strong>
+      <li>📁 venus <strong>r-x</strong>
         <ul>
-          <li class="file">notes</li>
+          <li>📄 notes</li>
         </ul>
       </li>
-      <li class="folder">mars <strong>r--</strong>
+      <li>📁 mars <strong>r--</strong>
         <ul>
-          <li class="file">notes</li>
+          <li>📄 notes</li>
         </ul>
       </li>
-      <li class="folder">pluto <strong>--x</strong>
+      <li>📁 pluto <strong>--x</strong>
         <ul>
-          <li class="file">notes</li>
+          <li>📄 notes</li>
         </ul>
       </li>
     </ul>
