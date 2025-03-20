@@ -1,7 +1,7 @@
 ---
 title: Streams
-teaching: 10
-exercises: 0
+teaching: 15
+exercises: 5
 questions:
 - "What are the standard output streams?"
 - "How can I redirect them?"
@@ -10,7 +10,9 @@ objectives:
 - "Split STDOUT and STDERR output with 2> and 1> redirects."
 - "Use the `tee` command to redirect to a file and the screen."
 keypoints:
-- ""
+- "STDERR can be redirected by using 2>."
+- "STDOUT can be redirected by using 1> or >."
+- "tee can be used to duplicate STDOUT and send the second copy to a file."
 ---
 
 There are three standard input/outputs streams created when you run a Unix command. These can be thought of as the transfer of data to and from your command. The three streams are standard input (STDIN), standard output (STDOUT) and standard error (STDERR).
