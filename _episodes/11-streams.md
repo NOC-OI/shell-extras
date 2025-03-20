@@ -15,9 +15,11 @@ keypoints:
 
 There are three standard input/outputs streams created when you run a Unix command. These can be thought of as the transfer of data to and from your command. The three streams are standard input (STDIN), standard output (STDOUT) and standard error (STDERR).
 
+To explore these streams, we're going to use Nelle's do-stats.sh script from earlier. Therefore, return to the `north-pacific-gyre` directory. 
+
 ## STDIN
 
-STDIN the the stream by which the program you are running is provided with its input data. Unix automatically connects this to your terminal keyboard. For example, when you are entering your password or passphrase when ssh-ing into a remote server, you are using STDIN. The stream ID of STDIN is 0.
+STDIN is the stream by which the program you are running is provided with its input data. Unix automatically connects this to your terminal keyboard. For example, when you are entering your password or passphrase when ssh-ing into a remote server, you are using STDIN. The stream ID of STDIN is 0.
 
 ## STDOUT vs STDERR
 
@@ -150,32 +152,36 @@ head: cannot open '2012-07-03/NENE01812C.txt' for reading: No such file or direc
 
 This redirects STDOUT to a text file as before, then `2>&1` redirects STDERR to wherever STDOUT is being redirected to.
 
-Our initial aim, however, was to redirect STDERR and STDOUT to two different files, in order to seperate any warnings or diagnostic errors from our program output. This can be done with:
-
-~~~
-bash do-stats.sh 2012-07-03/NENE01812C.txt > output.txt 2> error.txt
-~~~
-{: .language-bash}
-
-~~~
-cat output.txt
-~~~
-{: .language-bash}
-
-~~~
-2012-07-03/NENE01812C.txt
-~~~
-{: .output}
-
-~~~
-cat error.txt
-~~~
-{: .language-bash}
-
-~~~
-head: cannot open '2012-07-03/NENE01812C.txt' for reading: No such file or directory
-~~~
-{: .output}
+> ## Redirecting STDOUT and STDERR to different files
+> Our initial aim was to redirect STDERR and STDOUT to two different files, in order to seperate any warnings or diagnostic errors from our program output. Can you work out how Nelle can do this when running `bash do-stats.sh 2012-07-03/NENE01812C.txt`?
+>
+> > ## Solution
+> > ~~~
+> > bash do-stats.sh 2012-07-03/NENE01812C.txt > output.txt 2> error.txt
+> > ~~~
+> > {: .language-bash}
+> > 
+> > ~~~
+> > cat output.txt
+> > ~~~
+> > {: .language-bash}
+> > 
+> > ~~~
+> > 2012-07-03/NENE01812C.txt
+> > ~~~
+> > {: .output}
+> > 
+> > ~~~
+> > cat error.txt
+> > ~~~
+> > {: .language-bash}
+> > 
+> > ~~~
+> > head: cannot open '2012-07-03/NENE01812C.txt' for reading: No such file or directory
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
 
 
 ## The `tee` command 
@@ -244,11 +250,3 @@ log and actively monitor a compilation or a data processing step.
 
 Because `tee` preserves STDOUT, it allows recovery from actions that overwhelm 
 the buffer of your shell's window as well, which is often limited.
-
-> ## Some exercise
-> 
->
-> > ## Solution
-> > And some solution
-> {: .solution}
-{: .challenge}
