@@ -21,7 +21,7 @@ keypoints:
 Unix controls who can read, modify, and execute files using *permissions*. We'll also discuss Windows permissions later, as the concepts are similar but implementation differs.
 
 Let's start with a normal user called Nelle.
-She has a unique [user name]({{ page.root }}/reference/{{ site.index }}#user-name) (e.g., `nelle`), and a [user ID]({{ page.root }}/reference/{{ site.index }}#user-id), (a unique number, like `1404`).
+She has a unique [user name]({{ page.root }}/reference#user-name) (e.g., `nelle`), and a [user ID]({{ page.root }}/reference#user-id), (a unique number, like `1404`).
 
 > ## Why Integer IDs?
 >
@@ -45,9 +45,9 @@ She has a unique [user name]({{ page.root }}/reference/{{ site.index }}#user-nam
 > instead of "the chronotypical alpha-response trials on anacondas".
 {: .callout}
 
-Users can belong to any number of [groups]({{ page.root }}/reference/{{ site.index }}#user-group),
-each of which has a unique [group name]({{ page.root }}/reference/{{ site.index }}#user-group-name)
-and numeric [group ID]({{ page.root }}/reference/{{ site.index }}#user-group-id).
+Users can belong to any number of [groups]({{ page.root }}/reference#user-group),
+each of which has a unique [group name]({{ page.root }}/reference#user-group-name)
+and numeric [group ID]({{ page.root }}/reference#user-group-id).
 The list of who's in what group is usually stored in the file `/etc/group`. To see all the groups on a Unix system, you can run:
 
 ~~~
@@ -328,7 +328,7 @@ It gives someone the right to *traverse* the directory, but not to look at its c
 The distinction is subtle, so let's have a look at an example.
 Vlad's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
-![execute]({% link fig/x-for-directories.svg %} "Execute Permission for Directories")
+![execute]({% link data/x-for-directories.png %} "Execute Permission for Directories")
 
 Each of these has a subdirectory in turn called `notes`,
 and those sub-subdirectories contain various files.
