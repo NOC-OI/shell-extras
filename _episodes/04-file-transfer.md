@@ -1,6 +1,6 @@
 ---
 title: "Transferring Files"
-teaching: 15
+teaching: 25
 exercises: 10
 questions:
 - "How to use Wget, curl and rsync to transfer file?"

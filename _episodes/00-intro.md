@@ -1,6 +1,6 @@
 ---
 title: "Introduction"
-teaching: 5
+teaching: 15
 exercises: 0
 questions:
 - "What is the pre-requisite knowledge for this workshop."

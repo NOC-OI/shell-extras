@@ -1,7 +1,7 @@
 ---
 title: Processes and Job Control
-teaching: 15
-exercises: 15
+teaching: 20
+exercises: 10
 questions:
 - "How do keep track of the process running on my machine?"
 - "Can I run more than one program/script from within a shell?"

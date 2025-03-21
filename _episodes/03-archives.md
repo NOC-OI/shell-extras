@@ -1,7 +1,7 @@
 ---
 title: "Working with archive files"
-teaching: 15
-exercises: 5
+teaching: 20
+exercises: 30
 questions:
 - "Understanding how to extract and compress archive files."
 - "What is the difference between a tar and zip file?"

@@ -1,7 +1,7 @@
 ---
 title: "Disk Usage"
-teaching: 15
-exercises: 5
+teaching: 10
+exercises: 10
 questions:
 - "How do we find out how big a directory is on the command line?"
 - "How do we find out how much space is left on a disk from the command line?"
