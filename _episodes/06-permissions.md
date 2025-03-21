@@ -326,39 +326,24 @@ A directory isn't a program&mdash;how can we "run" it?
 In fact, 'x' means something different for directories.
 It gives someone the right to *traverse* the directory, but not to look at its contents.
 The distinction is subtle, so let's have a look at an example.
-Nelle's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
+Nelle's home directory has three subdirectories called `taiti`, `vanuatu`, and `tonga`:
 
-<style>
-  ul {
-      list-style-type: none;
-      padding-left: 20px;
-  }
-  li {
-      margin: 5px 0;
-  }
-  .folder::before {
-      content: "📁 ";
-  }
-  .file::before {
-      content: "📄 ";
-  }
-</style>
-<ul>
-  <li class="folder">nelle
+<ul style="list-style-type: none;padding-left: 20px;">
+  <li>📁 nelle
     <ul>
-      <li class="folder">venus <strong>r-x</strong>
+      <li>📁 taiti <strong>r-x</strong>
         <ul>
-          <li class="file">notes</li>
+          <li>📄 notes</li>
         </ul>
       </li>
-      <li class="folder">mars <strong>r--</strong>
+      <li>📁 vanuatu <strong>r--</strong>
         <ul>
-          <li class="file">notes</li>
+          <li>📄 notes</li>
         </ul>
       </li>
-      <li class="folder">pluto <strong>--x</strong>
+      <li>📁 tonga <strong>--x</strong>
         <ul>
-          <li class="file">notes</li>
+          <li>📄 notes</li>
         </ul>
       </li>
     </ul>
@@ -367,16 +352,16 @@ Nelle's home directory has three subdirectories called `venus`, `mars`, and `plu
 
 Each of these has a subdirectory in turn called `notes`,
 and those sub-subdirectories contain various files.
-If a user's permissions on `venus` are 'r-x',
-then if she tries to see the contents of `venus` and `venus/notes` using `ls`,
+If a user's permissions on `taiti` are 'r-x',
+then if she tries to see the contents of `taiti` and `taiti/notes` using `ls`,
 the computer lets her see both.
-If her permissions on `mars` are just 'r--',
-then she is allowed to read the contents of both `mars` and `mars/notes`.
-But if her permissions on `pluto` are only '--x',
-she cannot see what's in the `pluto` directory:
-`ls pluto` will tell her she doesn't have permission to view its contents.
-If she tries to look in `pluto/notes`, though, the computer will let her do that.
-She's allowed to go through `pluto`, but not to look at what's there.
+If her permissions on `vanuatu` are just 'r--',
+then she is allowed to read the contents of both `vanuatu` and `vanuatu/notes`.
+But if her permissions on `tonga` are only '--x',
+she cannot see what's in the `tonga` directory:
+`ls tonga` will tell her she doesn't have permission to view its contents.
+If she tries to look in `tonga/notes`, though, the computer will let her do that.
+She's allowed to go through `tonga`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 

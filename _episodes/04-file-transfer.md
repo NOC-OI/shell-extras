@@ -180,7 +180,7 @@ Please refer to the man pages by typing `man wget`, `man curl`, and
 > ## Continuing a stopped download
 > Start a download of a large file (e.g.
 > https://www.zenodo.org/record/5307070/files/S-only-10000x.tar.gz, a file from
-> a [dataset of simulated wastewater sequencing data for SARS-CoV-2](sars-cov2-wastewater)
+> a dataset of simulated wastewater sequencing data for SARS-CoV-2
 > using Wget and stop the download before it has finished by pressing the
 > 'ctrl' and 'c' keys together. This will leave a partially downloaded file on
 > your computer.
